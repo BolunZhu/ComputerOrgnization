@@ -3,7 +3,7 @@
 This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
 <lib desc="#Wiring" name="0">
     <tool name="Splitter">
-      <a name="facing" val="west"/>
+      <a name="facing" val="north"/>
     </tool>
     <tool name="Pin">
       <a name="facing" val="north"/>
@@ -13,7 +13,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="radix" val="10signed"/>
     </tool>
     <tool name="Tunnel">
-      <a name="facing" val="east"/>
       <a name="width" val="32"/>
     </tool>
     <tool name="Pull Resistor">
@@ -23,9 +22,11 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="facing" val="north"/>
     </tool>
     <tool name="Constant">
-      <a name="facing" val="north"/>
-      <a name="width" val="3"/>
       <a name="value" val="0x0"/>
+    </tool>
+    <tool name="Bit Extender">
+      <a name="in_width" val="32"/>
+      <a name="out_width" val="1"/>
     </tool>
   </lib>
   <lib desc="#Gates" name="1">
@@ -33,7 +34,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="width" val="3"/>
     </tool>
     <tool name="AND Gate">
-      <a name="facing" val="west"/>
+      <a name="width" val="16"/>
       <a name="inputs" val="2"/>
     </tool>
     <tool name="OR Gate">
@@ -59,14 +60,23 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
   </lib>
   <lib desc="#Plexers" name="2">
     <tool name="Multiplexer">
-      <a name="facing" val="north"/>
       <a name="width" val="32"/>
     </tool>
     <tool name="Demultiplexer">
       <a name="select" val="5"/>
     </tool>
+    <tool name="Decoder">
+      <a name="select" val="5"/>
+    </tool>
+    <tool name="BitSelector">
+      <a name="width" val="31"/>
+      <a name="group" val="5"/>
+    </tool>
   </lib>
   <lib desc="#Arithmetic" name="3">
+    <tool name="Adder">
+      <a name="width" val="6"/>
+    </tool>
     <tool name="Subtractor">
       <a name="width" val="16"/>
     </tool>
@@ -84,8 +94,21 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     </tool>
   </lib>
   <lib desc="#Memory" name="4">
+    <tool name="D Flip-Flop">
+      <a name="trigger" val="high"/>
+    </tool>
     <tool name="Register">
       <a name="width" val="32"/>
+    </tool>
+    <tool name="Counter">
+      <a name="width" val="6"/>
+      <a name="max" val="0x3f"/>
+    </tool>
+    <tool name="Shift Register">
+      <a name="length" val="4"/>
+    </tool>
+    <tool name="RAM">
+      <a name="dataWidth" val="32"/>
     </tool>
     <tool name="ROM">
       <a name="contents">addr/data: 8 8
@@ -102,11 +125,12 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="valign" val="base"/>
     </tool>
   </lib>
-  <lib desc="jar#F:\百度同步盘\0常用文件\J教学资料\对外培训\2018武汉导教班\导教班学员实验文件\cs3410.jar#edu.cornell.cs3410.Components" name="7">
+  <lib desc="jar#cs3410.jar#edu.cornell.cs3410.Components" name="7">
     <tool name="MIPSProgramROM">
       <a name="contents" val=""/>
     </tool>
   </lib>
+  <lib desc="file#alu.circ" name="8"/>
   <main name="◇多周期MIPS(微程序)"/>
   <options>
     <a name="gateUndefined" val="ignore"/>
@@ -154,106 +178,478 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <a name="clabel" val=""/>
     <a name="clabelup" val="east"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
-    <wire from="(760,390)" to="(790,390)"/>
-    <wire from="(760,300)" to="(790,300)"/>
-    <wire from="(760,410)" to="(790,410)"/>
-    <wire from="(60,40)" to="(110,40)"/>
-    <wire from="(690,10)" to="(690,100)"/>
-    <wire from="(830,390)" to="(900,390)"/>
-    <wire from="(830,370)" to="(900,370)"/>
-    <wire from="(830,350)" to="(900,350)"/>
-    <wire from="(830,330)" to="(900,330)"/>
-    <wire from="(830,310)" to="(900,310)"/>
-    <wire from="(830,290)" to="(900,290)"/>
-    <wire from="(830,410)" to="(900,410)"/>
-    <wire from="(10,10)" to="(690,10)"/>
-    <wire from="(10,100)" to="(690,100)"/>
-    <wire from="(810,430)" to="(810,450)"/>
-    <wire from="(10,10)" to="(10,100)"/>
+    <wire from="(1140,440)" to="(1140,840)"/>
+    <wire from="(770,210)" to="(820,210)"/>
+    <wire from="(820,620)" to="(820,630)"/>
+    <wire from="(880,240)" to="(880,250)"/>
+    <wire from="(480,510)" to="(480,840)"/>
+    <wire from="(790,230)" to="(790,260)"/>
+    <wire from="(910,140)" to="(910,230)"/>
+    <wire from="(100,140)" to="(910,140)"/>
+    <wire from="(230,470)" to="(230,490)"/>
+    <wire from="(1000,340)" to="(1000,490)"/>
+    <wire from="(120,490)" to="(160,490)"/>
+    <wire from="(130,540)" to="(170,540)"/>
     <wire from="(230,40)" to="(270,40)"/>
+    <wire from="(80,720)" to="(370,720)"/>
+    <wire from="(680,550)" to="(890,550)"/>
+    <wire from="(350,620)" to="(370,620)"/>
+    <wire from="(70,500)" to="(90,500)"/>
+    <wire from="(420,420)" to="(420,460)"/>
+    <wire from="(730,640)" to="(800,640)"/>
+    <wire from="(80,480)" to="(90,480)"/>
+    <wire from="(770,210)" to="(770,260)"/>
+    <wire from="(440,320)" to="(440,380)"/>
+    <wire from="(790,230)" to="(800,230)"/>
+    <wire from="(830,470)" to="(840,470)"/>
+    <wire from="(510,260)" to="(770,260)"/>
+    <wire from="(770,280)" to="(770,420)"/>
+    <wire from="(420,470)" to="(470,470)"/>
+    <wire from="(130,540)" to="(130,550)"/>
+    <wire from="(220,470)" to="(220,480)"/>
+    <wire from="(100,140)" to="(100,470)"/>
+    <wire from="(1100,200)" to="(1100,420)"/>
+    <wire from="(640,520)" to="(700,520)"/>
+    <wire from="(310,560)" to="(310,570)"/>
+    <wire from="(690,10)" to="(690,100)"/>
+    <wire from="(510,220)" to="(680,220)"/>
+    <wire from="(470,440)" to="(470,460)"/>
+    <wire from="(420,420)" to="(530,420)"/>
+    <wire from="(70,760)" to="(880,760)"/>
+    <wire from="(10,10)" to="(690,10)"/>
+    <wire from="(10,10)" to="(10,100)"/>
+    <wire from="(880,680)" to="(880,760)"/>
+    <wire from="(660,630)" to="(660,650)"/>
+    <wire from="(390,390)" to="(390,490)"/>
+    <wire from="(200,580)" to="(290,580)"/>
+    <wire from="(790,260)" to="(790,430)"/>
+    <wire from="(180,510)" to="(180,550)"/>
+    <wire from="(510,470)" to="(530,470)"/>
+    <wire from="(790,260)" to="(820,260)"/>
+    <wire from="(140,500)" to="(160,500)"/>
+    <wire from="(570,650)" to="(640,650)"/>
+    <wire from="(710,300)" to="(710,490)"/>
+    <wire from="(220,470)" to="(230,470)"/>
+    <wire from="(1070,430)" to="(1090,430)"/>
+    <wire from="(680,650)" to="(690,650)"/>
     <wire from="(480,40)" to="(550,40)"/>
-    <comp lib="6" loc="(865,364)" name="Text">
-      <a name="text" val="AluOP"/>
+    <wire from="(1120,440)" to="(1140,440)"/>
+    <wire from="(410,300)" to="(410,370)"/>
+    <wire from="(630,430)" to="(750,430)"/>
+    <wire from="(410,300)" to="(470,300)"/>
+    <wire from="(470,440)" to="(530,440)"/>
+    <wire from="(640,520)" to="(640,650)"/>
+    <wire from="(240,660)" to="(290,660)"/>
+    <wire from="(60,40)" to="(110,40)"/>
+    <wire from="(10,100)" to="(690,100)"/>
+    <wire from="(390,490)" to="(390,520)"/>
+    <wire from="(940,340)" to="(940,490)"/>
+    <wire from="(200,490)" to="(200,580)"/>
+    <wire from="(170,510)" to="(170,540)"/>
+    <wire from="(830,370)" to="(1070,370)"/>
+    <wire from="(580,520)" to="(580,540)"/>
+    <wire from="(370,620)" to="(370,720)"/>
+    <wire from="(440,320)" to="(470,320)"/>
+    <wire from="(640,650)" to="(660,650)"/>
+    <wire from="(490,340)" to="(490,450)"/>
+    <wire from="(140,210)" to="(420,210)"/>
+    <wire from="(1070,370)" to="(1070,430)"/>
+    <wire from="(850,250)" to="(880,250)"/>
+    <wire from="(390,490)" to="(400,490)"/>
+    <wire from="(230,490)" to="(240,490)"/>
+    <wire from="(190,490)" to="(200,490)"/>
+    <wire from="(680,500)" to="(680,550)"/>
+    <wire from="(510,200)" to="(1100,200)"/>
+    <wire from="(510,280)" to="(770,280)"/>
+    <wire from="(510,320)" to="(580,320)"/>
+    <wire from="(420,480)" to="(480,480)"/>
+    <wire from="(860,450)" to="(910,450)"/>
+    <wire from="(70,500)" to="(70,760)"/>
+    <wire from="(630,500)" to="(680,500)"/>
+    <wire from="(860,450)" to="(860,460)"/>
+    <wire from="(1050,450)" to="(1090,450)"/>
+    <wire from="(480,510)" to="(530,510)"/>
+    <wire from="(470,460)" to="(470,470)"/>
+    <wire from="(510,240)" to="(820,240)"/>
+    <wire from="(580,320)" to="(580,410)"/>
+    <wire from="(370,720)" to="(800,720)"/>
+    <wire from="(940,340)" to="(980,340)"/>
+    <wire from="(890,470)" to="(890,550)"/>
+    <wire from="(810,470)" to="(830,470)"/>
+    <wire from="(140,210)" to="(140,500)"/>
+    <wire from="(860,680)" to="(880,680)"/>
+    <wire from="(890,470)" to="(910,470)"/>
+    <wire from="(440,210)" to="(470,210)"/>
+    <wire from="(410,380)" to="(440,380)"/>
+    <wire from="(680,500)" to="(700,500)"/>
+    <wire from="(730,510)" to="(750,510)"/>
+    <wire from="(400,540)" to="(400,650)"/>
+    <wire from="(830,370)" to="(830,470)"/>
+    <wire from="(660,630)" to="(690,630)"/>
+    <wire from="(480,840)" to="(1140,840)"/>
+    <wire from="(850,220)" to="(880,220)"/>
+    <wire from="(470,460)" to="(480,460)"/>
+    <wire from="(80,480)" to="(80,720)"/>
+    <wire from="(680,220)" to="(680,340)"/>
+    <wire from="(380,490)" to="(390,490)"/>
+    <wire from="(680,340)" to="(940,340)"/>
+    <wire from="(400,650)" to="(530,650)"/>
+    <wire from="(980,490)" to="(980,540)"/>
+    <wire from="(1020,490)" to="(1020,540)"/>
+    <wire from="(510,300)" to="(710,300)"/>
+    <comp lib="0" loc="(390,390)" name="Splitter">
+      <a name="incoming" val="32"/>
+      <a name="bit0" val="1"/>
+      <a name="bit2" val="1"/>
+      <a name="bit3" val="1"/>
+      <a name="bit4" val="1"/>
+      <a name="bit5" val="1"/>
+      <a name="bit6" val="none"/>
+      <a name="bit7" val="none"/>
+      <a name="bit8" val="none"/>
+      <a name="bit9" val="none"/>
+      <a name="bit10" val="none"/>
+      <a name="bit11" val="none"/>
+      <a name="bit12" val="none"/>
+      <a name="bit13" val="none"/>
+      <a name="bit14" val="none"/>
+      <a name="bit15" val="none"/>
+      <a name="bit16" val="none"/>
+      <a name="bit17" val="none"/>
+      <a name="bit18" val="none"/>
+      <a name="bit19" val="none"/>
+      <a name="bit20" val="none"/>
+      <a name="bit21" val="none"/>
+      <a name="bit22" val="none"/>
+      <a name="bit23" val="none"/>
+      <a name="bit24" val="none"/>
+      <a name="bit25" val="none"/>
+      <a name="bit26" val="0"/>
+      <a name="bit27" val="0"/>
+      <a name="bit28" val="0"/>
+      <a name="bit29" val="0"/>
+      <a name="bit30" val="0"/>
+      <a name="bit31" val="0"/>
     </comp>
-    <comp lib="6" loc="(767,383)" name="Text">
-      <a name="text" val="Op"/>
+    <comp lib="6" loc="(539,255)" name="Text">
+      <a name="text" val="Bne"/>
     </comp>
-    <comp lib="6" loc="(836,450)" name="Text">
-      <a name="text" val="RegDst"/>
+    <comp lib="2" loc="(510,470)" name="Multiplexer">
+      <a name="selloc" val="tr"/>
+      <a name="width" val="5"/>
+      <a name="enable" val="false"/>
     </comp>
-    <comp lib="0" loc="(230,40)" name="Clock"/>
-    <comp lib="4" loc="(70,350)" name="Register">
-      <a name="width" val="32"/>
-      <a name="label" val="PC"/>
-      <a name="labelfont" val="SansSerif bold 12"/>
+    <comp lib="0" loc="(680,650)" name="Constant">
+      <a name="width" val="5"/>
+      <a name="value" val="0x2"/>
     </comp>
-    <comp lib="6" loc="(770,294)" name="Text">
-      <a name="text" val="Halt"/>
+    <comp lib="0" loc="(200,490)" name="Splitter">
+      <a name="fanout" val="1"/>
+      <a name="incoming" val="32"/>
+      <a name="bit0" val="none"/>
+      <a name="bit1" val="none"/>
+      <a name="bit2" val="0"/>
+      <a name="bit3" val="0"/>
+      <a name="bit4" val="0"/>
+      <a name="bit5" val="0"/>
+      <a name="bit6" val="0"/>
+      <a name="bit7" val="0"/>
+      <a name="bit8" val="0"/>
+      <a name="bit9" val="0"/>
+      <a name="bit10" val="0"/>
+      <a name="bit11" val="0"/>
+      <a name="bit12" val="none"/>
+      <a name="bit13" val="none"/>
+      <a name="bit14" val="none"/>
+      <a name="bit15" val="none"/>
+      <a name="bit16" val="none"/>
+      <a name="bit17" val="none"/>
+      <a name="bit18" val="none"/>
+      <a name="bit19" val="none"/>
+      <a name="bit20" val="none"/>
+      <a name="bit21" val="none"/>
+      <a name="bit22" val="none"/>
+      <a name="bit23" val="none"/>
+      <a name="bit24" val="none"/>
+      <a name="bit25" val="none"/>
+      <a name="bit26" val="none"/>
+      <a name="bit27" val="none"/>
+      <a name="bit28" val="none"/>
+      <a name="bit29" val="none"/>
+      <a name="bit30" val="none"/>
+      <a name="bit31" val="none"/>
     </comp>
-    <comp lib="6" loc="(874,305)" name="Text">
-      <a name="text" val="MemWrite"/>
+    <comp lib="1" loc="(820,230)" name="NOT Gate">
+      <a name="size" val="20"/>
     </comp>
-    <comp loc="(540,340)" name="◆MIPS ALU"/>
-    <comp lib="6" loc="(771,404)" name="Text">
-      <a name="text" val="Func"/>
+    <comp lib="6" loc="(345,89)" name="Text">
+      <a name="text" val="Ctrl+K  Command+K触发时钟连续仿真，程序运行结束后可停机，查看数据存储器中80单元的排序情况是有符号降序"/>
     </comp>
-    <comp lib="0" loc="(270,40)" name="Tunnel">
-      <a name="label" val="CLK"/>
-    </comp>
-    <comp lib="4" loc="(240,350)" name="ROM">
-      <a name="addrWidth" val="10"/>
-      <a name="dataWidth" val="32"/>
-      <a name="contents">addr/data: 10 32
-0
-</a>
-    </comp>
-    <comp lib="0" loc="(110,40)" name="Tunnel">
-      <a name="label" val="RST"/>
+    <comp lib="6" loc="(549,294)" name="Text">
+      <a name="text" val="AluSrcB"/>
     </comp>
     <comp lib="0" loc="(480,40)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="width" val="16"/>
       <a name="label" val="总周期数"/>
     </comp>
-    <comp lib="6" loc="(183,302)" name="Text">
+    <comp lib="0" loc="(840,470)" name="Splitter">
+      <a name="fanout" val="1"/>
+      <a name="incoming" val="32"/>
+      <a name="bit0" val="none"/>
+      <a name="bit1" val="none"/>
+      <a name="bit2" val="0"/>
+      <a name="bit3" val="0"/>
+      <a name="bit4" val="0"/>
+      <a name="bit5" val="0"/>
+      <a name="bit6" val="0"/>
+      <a name="bit7" val="0"/>
+      <a name="bit8" val="0"/>
+      <a name="bit9" val="0"/>
+      <a name="bit10" val="0"/>
+      <a name="bit11" val="0"/>
+      <a name="bit12" val="none"/>
+      <a name="bit13" val="none"/>
+      <a name="bit14" val="none"/>
+      <a name="bit15" val="none"/>
+      <a name="bit16" val="none"/>
+      <a name="bit17" val="none"/>
+      <a name="bit18" val="none"/>
+      <a name="bit19" val="none"/>
+      <a name="bit20" val="none"/>
+      <a name="bit21" val="none"/>
+      <a name="bit22" val="none"/>
+      <a name="bit23" val="none"/>
+      <a name="bit24" val="none"/>
+      <a name="bit25" val="none"/>
+      <a name="bit26" val="none"/>
+      <a name="bit27" val="none"/>
+      <a name="bit28" val="none"/>
+      <a name="bit29" val="none"/>
+      <a name="bit30" val="none"/>
+      <a name="bit31" val="none"/>
+    </comp>
+    <comp lib="0" loc="(110,40)" name="Tunnel">
+      <a name="label" val="RST"/>
+    </comp>
+    <comp lib="6" loc="(308,442)" name="Text">
       <a name="text" val="指令存储器"/>
       <a name="font" val="SansSerif bold 12"/>
     </comp>
-    <comp loc="(830,310)" name="◇单周期硬布线控制器"/>
+    <comp loc="(630,430)" name="◆MIPS Regifile"/>
+    <comp lib="0" loc="(570,650)" name="Bit Extender">
+      <a name="in_width" val="16"/>
+      <a name="out_width" val="32"/>
+      <a name="type" val="sign"/>
+    </comp>
+    <comp lib="1" loc="(850,250)" name="AND Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="3" loc="(730,640)" name="Shifter">
+      <a name="width" val="32"/>
+    </comp>
+    <comp loc="(350,620)" name="◆MIPS ALU"/>
+    <comp lib="4" loc="(1050,450)" name="RAM">
+      <a name="addrWidth" val="10"/>
+      <a name="dataWidth" val="32"/>
+      <a name="bus" val="separate"/>
+    </comp>
+    <comp lib="0" loc="(310,560)" name="Constant">
+      <a name="facing" val="south"/>
+      <a name="width" val="4"/>
+      <a name="value" val="0x5"/>
+    </comp>
+    <comp lib="0" loc="(230,40)" name="Clock"/>
+    <comp lib="1" loc="(420,210)" name="NOT Gate">
+      <a name="facing" val="west"/>
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="0" loc="(820,620)" name="Constant">
+      <a name="facing" val="south"/>
+      <a name="width" val="4"/>
+      <a name="value" val="0x5"/>
+    </comp>
+    <comp loc="(510,220)" name="◇单周期硬布线控制器"/>
+    <comp lib="6" loc="(554,215)" name="Text">
+      <a name="text" val="MemWrite"/>
+    </comp>
+    <comp lib="0" loc="(400,490)" name="Splitter">
+      <a name="fanout" val="3"/>
+      <a name="incoming" val="32"/>
+      <a name="bit0" val="none"/>
+      <a name="bit1" val="none"/>
+      <a name="bit2" val="none"/>
+      <a name="bit3" val="none"/>
+      <a name="bit4" val="none"/>
+      <a name="bit5" val="none"/>
+      <a name="bit6" val="none"/>
+      <a name="bit7" val="none"/>
+      <a name="bit8" val="none"/>
+      <a name="bit9" val="none"/>
+      <a name="bit10" val="none"/>
+      <a name="bit11" val="2"/>
+      <a name="bit12" val="2"/>
+      <a name="bit13" val="2"/>
+      <a name="bit14" val="2"/>
+      <a name="bit15" val="2"/>
+      <a name="bit16" val="1"/>
+      <a name="bit17" val="1"/>
+      <a name="bit18" val="1"/>
+      <a name="bit19" val="1"/>
+      <a name="bit20" val="1"/>
+      <a name="bit21" val="0"/>
+      <a name="bit22" val="0"/>
+      <a name="bit23" val="0"/>
+      <a name="bit24" val="0"/>
+      <a name="bit25" val="0"/>
+      <a name="bit26" val="none"/>
+      <a name="bit27" val="none"/>
+      <a name="bit28" val="none"/>
+      <a name="bit29" val="none"/>
+      <a name="bit30" val="none"/>
+      <a name="bit31" val="none"/>
+    </comp>
+    <comp lib="6" loc="(545,274)" name="Text">
+      <a name="text" val="AluOP"/>
+    </comp>
+    <comp lib="0" loc="(550,40)" name="Probe">
+      <a name="facing" val="west"/>
+      <a name="radix" val="10unsigned"/>
+    </comp>
+    <comp lib="0" loc="(390,520)" name="Splitter">
+      <a name="facing" val="south"/>
+      <a name="fanout" val="1"/>
+      <a name="incoming" val="32"/>
+      <a name="bit1" val="0"/>
+      <a name="bit2" val="0"/>
+      <a name="bit3" val="0"/>
+      <a name="bit4" val="0"/>
+      <a name="bit5" val="0"/>
+      <a name="bit6" val="0"/>
+      <a name="bit7" val="0"/>
+      <a name="bit8" val="0"/>
+      <a name="bit9" val="0"/>
+      <a name="bit10" val="0"/>
+      <a name="bit11" val="0"/>
+      <a name="bit12" val="0"/>
+      <a name="bit13" val="0"/>
+      <a name="bit14" val="0"/>
+      <a name="bit15" val="0"/>
+      <a name="bit16" val="none"/>
+      <a name="bit17" val="none"/>
+      <a name="bit18" val="none"/>
+      <a name="bit19" val="none"/>
+      <a name="bit20" val="none"/>
+      <a name="bit21" val="none"/>
+      <a name="bit22" val="none"/>
+      <a name="bit23" val="none"/>
+      <a name="bit24" val="none"/>
+      <a name="bit25" val="none"/>
+      <a name="bit26" val="none"/>
+      <a name="bit27" val="none"/>
+      <a name="bit28" val="none"/>
+      <a name="bit29" val="none"/>
+      <a name="bit30" val="none"/>
+      <a name="bit31" val="none"/>
+    </comp>
+    <comp lib="1" loc="(1000,340)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="0" loc="(1020,540)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="label" val="RST"/>
+    </comp>
+    <comp lib="4" loc="(380,490)" name="ROM">
+      <a name="addrWidth" val="10"/>
+      <a name="dataWidth" val="32"/>
+      <a name="contents">addr/data: 10 32
+2010ffff 20110000 ae300200 22100001 22310004 ae300200 22100001 22310004
+ae300200 22100001 22310004 ae300200 22100001 22310004 ae300200 22100001
+22310004 ae300200 22100001 22310004 ae300200 22100001 22310004 ae300200
+8020 2011001c 8e130200 8e340200 274402a 11000002 ae330200 ae140200
+2231fffc 1611fff8 22100004 2011001c 1611fff5 2002000a c
+</a>
+    </comp>
+    <comp lib="0" loc="(980,540)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="label" val="CLK"/>
+    </comp>
+    <comp loc="(810,470)" name="◆MIPS ALU"/>
+    <comp lib="1" loc="(910,230)" name="OR Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="0" loc="(270,40)" name="Tunnel">
+      <a name="label" val="CLK"/>
+    </comp>
+    <comp lib="4" loc="(190,490)" name="Register">
+      <a name="width" val="32"/>
+      <a name="label" val="PC"/>
+      <a name="labelfont" val="SansSerif bold 12"/>
+    </comp>
+    <comp lib="0" loc="(130,550)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="label" val="CLK"/>
+    </comp>
+    <comp lib="6" loc="(516,360)" name="Text">
+      <a name="text" val="RegDst"/>
+    </comp>
     <comp lib="5" loc="(60,40)" name="Button">
       <a name="color" val="#11ff29"/>
       <a name="label" val="总复位"/>
       <a name="labelloc" val="south"/>
       <a name="labelcolor" val="#ff0a08"/>
     </comp>
-    <comp lib="6" loc="(869,384)" name="Text">
-      <a name="text" val="AluSrcB"/>
+    <comp lib="0" loc="(580,540)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="label" val="CLK"/>
     </comp>
-    <comp loc="(410,430)" name="◆MIPS Regifile"/>
-    <comp lib="6" loc="(859,326)" name="Text">
+    <comp lib="0" loc="(180,550)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="label" val="RST"/>
+    </comp>
+    <comp lib="6" loc="(539,236)" name="Text">
       <a name="text" val="Beq"/>
     </comp>
-    <comp lib="7" loc="(440,300)" name="RegisterFile"/>
-    <comp lib="6" loc="(345,89)" name="Text">
-      <a name="text" val="Ctrl+K  Command+K触发时钟连续仿真，程序运行结束后可停机，查看数据存储器中80单元的排序情况是有符号降序"/>
-    </comp>
-    <comp lib="4" loc="(720,350)" name="RAM">
-      <a name="addrWidth" val="10"/>
-      <a name="dataWidth" val="32"/>
-      <a name="bus" val="separate"/>
-    </comp>
-    <comp lib="6" loc="(878,285)" name="Text">
+    <comp loc="(860,680)" name="◆MIPS ALU"/>
+    <comp lib="6" loc="(558,195)" name="Text">
       <a name="text" val="MemToReg"/>
     </comp>
-    <comp lib="0" loc="(550,40)" name="Probe">
-      <a name="facing" val="west"/>
-      <a name="radix" val="10unsigned"/>
+    <comp lib="2" loc="(730,510)" name="Multiplexer">
+      <a name="selloc" val="tr"/>
+      <a name="width" val="32"/>
+      <a name="enable" val="false"/>
     </comp>
-    <comp lib="6" loc="(873,405)" name="Text">
+    <comp lib="2" loc="(120,490)" name="Multiplexer">
+      <a name="selloc" val="tr"/>
+      <a name="width" val="32"/>
+      <a name="enable" val="false"/>
+    </comp>
+    <comp lib="6" loc="(447,293)" name="Text">
+      <a name="text" val="Op"/>
+    </comp>
+    <comp lib="0" loc="(240,660)" name="Constant">
+      <a name="width" val="32"/>
+      <a name="value" val="0x4"/>
+    </comp>
+    <comp lib="1" loc="(850,220)" name="AND Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="2" loc="(1120,440)" name="Multiplexer">
+      <a name="selloc" val="tr"/>
+      <a name="width" val="32"/>
+      <a name="enable" val="false"/>
+    </comp>
+    <comp lib="6" loc="(450,204)" name="Text">
+      <a name="text" val="Halt"/>
+    </comp>
+    <comp lib="6" loc="(553,315)" name="Text">
       <a name="text" val="RegWrite"/>
     </comp>
-    <comp lib="6" loc="(859,345)" name="Text">
-      <a name="text" val="Bne"/>
+    <comp lib="6" loc="(451,314)" name="Text">
+      <a name="text" val="Func"/>
     </comp>
   </circuit>
   <circuit name="◇单周期硬布线控制器">
@@ -276,70 +672,122 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <circ-port height="10" pin="930,370" width="10" x="145" y="95"/>
       <circ-anchor facing="east" height="6" width="6" x="187" y="107"/>
     </appear>
-    <wire from="(760,360)" to="(760,370)"/>
-    <wire from="(190,190)" to="(1020,190)"/>
-    <wire from="(10,470)" to="(580,470)"/>
-    <wire from="(820,360)" to="(820,370)"/>
-    <wire from="(260,40)" to="(260,50)"/>
     <wire from="(1130,470)" to="(1130,880)"/>
     <wire from="(80,520)" to="(80,530)"/>
-    <wire from="(400,360)" to="(400,370)"/>
-    <wire from="(460,360)" to="(460,370)"/>
-    <wire from="(320,360)" to="(320,370)"/>
-    <wire from="(200,230)" to="(1020,230)"/>
-    <wire from="(590,470)" to="(590,880)"/>
-    <wire from="(210,150)" to="(1020,150)"/>
-    <wire from="(210,270)" to="(1020,270)"/>
+    <wire from="(670,600)" to="(710,600)"/>
+    <wire from="(570,210)" to="(670,210)"/>
+    <wire from="(430,620)" to="(430,700)"/>
+    <wire from="(750,590)" to="(850,590)"/>
     <wire from="(60,670)" to="(100,670)"/>
     <wire from="(60,550)" to="(100,550)"/>
     <wire from="(60,790)" to="(100,790)"/>
-    <wire from="(60,610)" to="(100,610)"/>
-    <wire from="(60,850)" to="(100,850)"/>
-    <wire from="(60,730)" to="(100,730)"/>
+    <wire from="(500,580)" to="(500,610)"/>
     <wire from="(10,470)" to="(10,880)"/>
-    <wire from="(10,10)" to="(1130,10)"/>
+    <wire from="(340,770)" to="(360,770)"/>
     <wire from="(80,710)" to="(100,710)"/>
     <wire from="(80,590)" to="(100,590)"/>
     <wire from="(80,830)" to="(100,830)"/>
+    <wire from="(160,250)" to="(820,250)"/>
+    <wire from="(400,760)" to="(410,760)"/>
+    <wire from="(470,830)" to="(480,830)"/>
+    <wire from="(490,610)" to="(500,610)"/>
+    <wire from="(680,190)" to="(680,310)"/>
+    <wire from="(820,250)" to="(820,370)"/>
+    <wire from="(760,230)" to="(1020,230)"/>
+    <wire from="(320,150)" to="(390,150)"/>
+    <wire from="(400,680)" to="(460,680)"/>
+    <wire from="(400,600)" to="(460,600)"/>
+    <wire from="(660,170)" to="(660,310)"/>
+    <wire from="(760,230)" to="(760,370)"/>
+    <wire from="(430,700)" to="(430,840)"/>
+    <wire from="(70,40)" to="(70,50)"/>
+    <wire from="(390,150)" to="(1020,150)"/>
+    <wire from="(160,170)" to="(400,170)"/>
+    <wire from="(660,170)" to="(1020,170)"/>
+    <wire from="(140,720)" to="(180,720)"/>
+    <wire from="(140,600)" to="(180,600)"/>
+    <wire from="(950,720)" to="(950,740)"/>
+    <wire from="(940,670)" to="(940,690)"/>
+    <wire from="(430,700)" to="(460,700)"/>
+    <wire from="(430,620)" to="(460,620)"/>
+    <wire from="(930,270)" to="(1020,270)"/>
+    <wire from="(590,470)" to="(1130,470)"/>
+    <wire from="(430,840)" to="(440,840)"/>
+    <wire from="(80,650)" to="(80,710)"/>
+    <wire from="(80,530)" to="(80,590)"/>
+    <wire from="(80,770)" to="(80,830)"/>
+    <wire from="(300,750)" to="(360,750)"/>
+    <wire from="(300,670)" to="(360,670)"/>
+    <wire from="(300,590)" to="(360,590)"/>
+    <wire from="(10,470)" to="(580,470)"/>
+    <wire from="(410,190)" to="(460,190)"/>
+    <wire from="(260,40)" to="(260,50)"/>
+    <wire from="(590,470)" to="(590,880)"/>
+    <wire from="(200,230)" to="(760,230)"/>
+    <wire from="(300,670)" to="(300,750)"/>
+    <wire from="(300,590)" to="(300,670)"/>
+    <wire from="(320,150)" to="(320,370)"/>
+    <wire from="(400,340)" to="(400,370)"/>
+    <wire from="(60,610)" to="(100,610)"/>
+    <wire from="(60,850)" to="(100,850)"/>
+    <wire from="(60,730)" to="(100,730)"/>
+    <wire from="(140,840)" to="(430,840)"/>
+    <wire from="(500,610)" to="(540,610)"/>
+    <wire from="(10,10)" to="(1130,10)"/>
+    <wire from="(850,700)" to="(870,700)"/>
+    <wire from="(900,710)" to="(920,710)"/>
+    <wire from="(520,690)" to="(540,690)"/>
+    <wire from="(490,690)" to="(520,690)"/>
+    <wire from="(390,150)" to="(390,310)"/>
+    <wire from="(690,580)" to="(710,580)"/>
+    <wire from="(330,690)" to="(360,690)"/>
+    <wire from="(330,610)" to="(360,610)"/>
+    <wire from="(190,190)" to="(410,190)"/>
+    <wire from="(570,210)" to="(570,370)"/>
     <wire from="(80,650)" to="(100,650)"/>
     <wire from="(590,880)" to="(1130,880)"/>
     <wire from="(80,530)" to="(100,530)"/>
     <wire from="(80,770)" to="(100,770)"/>
     <wire from="(290,750)" to="(300,750)"/>
-    <wire from="(670,360)" to="(670,370)"/>
+    <wire from="(210,270)" to="(930,270)"/>
+    <wire from="(400,170)" to="(660,170)"/>
     <wire from="(10,10)" to="(10,460)"/>
-    <wire from="(570,360)" to="(570,370)"/>
-    <wire from="(930,360)" to="(930,370)"/>
     <wire from="(10,880)" to="(580,880)"/>
-    <wire from="(140,840)" to="(200,840)"/>
     <wire from="(170,40)" to="(170,50)"/>
-    <wire from="(70,40)" to="(70,50)"/>
+    <wire from="(400,170)" to="(400,310)"/>
+    <wire from="(510,540)" to="(510,550)"/>
+    <wire from="(690,710)" to="(750,710)"/>
+    <wire from="(210,150)" to="(320,150)"/>
     <wire from="(1130,10)" to="(1130,460)"/>
     <wire from="(580,470)" to="(580,880)"/>
+    <wire from="(670,340)" to="(670,370)"/>
     <wire from="(140,540)" to="(180,540)"/>
     <wire from="(140,780)" to="(180,780)"/>
     <wire from="(140,660)" to="(180,660)"/>
-    <wire from="(140,720)" to="(180,720)"/>
-    <wire from="(140,600)" to="(180,600)"/>
+    <wire from="(930,720)" to="(930,740)"/>
     <wire from="(10,460)" to="(1130,460)"/>
-    <wire from="(160,170)" to="(1020,170)"/>
-    <wire from="(160,210)" to="(1020,210)"/>
-    <wire from="(160,250)" to="(1020,250)"/>
-    <wire from="(590,470)" to="(1130,470)"/>
+    <wire from="(460,190)" to="(680,190)"/>
+    <wire from="(850,590)" to="(850,700)"/>
+    <wire from="(410,820)" to="(440,820)"/>
+    <wire from="(160,210)" to="(570,210)"/>
+    <wire from="(520,580)" to="(520,690)"/>
+    <wire from="(680,190)" to="(1020,190)"/>
+    <wire from="(670,210)" to="(1020,210)"/>
+    <wire from="(720,730)" to="(750,730)"/>
+    <wire from="(930,270)" to="(930,370)"/>
+    <wire from="(670,210)" to="(670,310)"/>
+    <wire from="(460,190)" to="(460,370)"/>
+    <wire from="(820,250)" to="(1020,250)"/>
+    <wire from="(410,760)" to="(410,820)"/>
+    <wire from="(790,720)" to="(870,720)"/>
     <wire from="(80,710)" to="(80,770)"/>
     <wire from="(80,590)" to="(80,650)"/>
-    <wire from="(80,650)" to="(80,710)"/>
-    <wire from="(80,530)" to="(80,590)"/>
-    <wire from="(80,770)" to="(80,830)"/>
-    <comp lib="3" loc="(140,720)" name="Comparator">
-      <a name="width" val="6"/>
-    </comp>
-    <comp lib="0" loc="(520,780)" name="Tunnel">
-      <a name="label" val="SysCall"/>
-    </comp>
-    <comp lib="0" loc="(200,230)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="BEQ"/>
+    <wire from="(410,190)" to="(410,310)"/>
+    <comp lib="0" loc="(570,370)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="MemWrite"/>
+      <a name="labelloc" val="east"/>
     </comp>
     <comp lib="0" loc="(670,370)" name="Pin">
       <a name="facing" val="north"/>
@@ -347,119 +795,139 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="label" val="AluSrc"/>
       <a name="labelloc" val="east"/>
     </comp>
-    <comp lib="3" loc="(140,660)" name="Comparator">
+    <comp lib="3" loc="(140,780)" name="Comparator">
       <a name="width" val="6"/>
     </comp>
-    <comp lib="0" loc="(690,710)" name="Tunnel">
+    <comp lib="3" loc="(140,600)" name="Comparator">
+      <a name="width" val="6"/>
+    </comp>
+    <comp lib="0" loc="(940,670)" name="Tunnel">
+      <a name="facing" val="south"/>
+      <a name="width" val="4"/>
+      <a name="label" val="ALU_OP"/>
+    </comp>
+    <comp lib="0" loc="(540,610)" name="Tunnel">
+      <a name="label" val="SLT"/>
+    </comp>
+    <comp lib="3" loc="(140,840)" name="Comparator">
+      <a name="width" val="6"/>
+    </comp>
+    <comp lib="0" loc="(210,270)" name="Tunnel">
       <a name="facing" val="east"/>
-      <a name="width" val="6"/>
-      <a name="label" val="FUNC"/>
+      <a name="label" val="SysCall"/>
     </comp>
-    <comp lib="6" loc="(310,498)" name="Text">
-      <a name="text" val="指令译码逻辑"/>
+    <comp lib="3" loc="(140,720)" name="Comparator">
+      <a name="width" val="6"/>
+    </comp>
+    <comp lib="1" loc="(900,710)" name="AND Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="0" loc="(190,190)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="LW"/>
+    </comp>
+    <comp lib="6" loc="(932,867)" name="Text">
+      <a name="text" val="给出简单的逻辑实现ALU_OP与OP、Func之间的对应关系"/>
       <a name="font" val="SansSerif bold 14"/>
     </comp>
-    <comp lib="0" loc="(70,40)" name="Pin">
-      <a name="facing" val="south"/>
+    <comp lib="0" loc="(460,370)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="MemToReg"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="2" loc="(940,690)" name="Multiplexer">
+      <a name="facing" val="north"/>
+      <a name="width" val="4"/>
+      <a name="enable" val="false"/>
+    </comp>
+    <comp lib="0" loc="(60,670)" name="Constant">
       <a name="width" val="6"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="OP"/>
+      <a name="value" val="0x4"/>
+    </comp>
+    <comp lib="6" loc="(858,498)" name="Text">
+      <a name="text" val="ALU控制器逻辑"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp lib="0" loc="(340,770)" name="Constant">
+      <a name="width" val="6"/>
+      <a name="value" val="0xc"/>
     </comp>
     <comp lib="0" loc="(60,850)" name="Constant">
       <a name="width" val="6"/>
       <a name="value" val="0x0"/>
     </comp>
-    <comp lib="0" loc="(760,370)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="Beq"/>
-      <a name="labelloc" val="east"/>
+    <comp lib="0" loc="(720,730)" name="Constant">
+      <a name="width" val="6"/>
+      <a name="value" val="0x2a"/>
     </comp>
     <comp lib="0" loc="(180,780)" name="Tunnel">
       <a name="label" val="ADDI"/>
     </comp>
-    <comp lib="0" loc="(400,370)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="RegWrite"/>
-      <a name="labelloc" val="south"/>
+    <comp lib="3" loc="(400,760)" name="Comparator">
+      <a name="width" val="6"/>
     </comp>
     <comp lib="0" loc="(690,580)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="width" val="6"/>
       <a name="label" val="OP"/>
     </comp>
-    <comp lib="3" loc="(140,600)" name="Comparator">
-      <a name="width" val="6"/>
-    </comp>
-    <comp lib="6" loc="(368,906)" name="Text">
-      <a name="text" val="给出简单的逻辑实现对应指令译码信号，LW、SW、BEQ、BNE、ADDI、ADD、SLT、SYSCALL、R_TYPE。"/>
-      <a name="font" val="SansSerif bold 14"/>
-    </comp>
-    <comp lib="6" loc="(858,498)" name="Text">
-      <a name="text" val="ALU控制器逻辑"/>
-      <a name="font" val="SansSerif bold 14"/>
-    </comp>
     <comp lib="0" loc="(210,150)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="R_TYPE"/>
     </comp>
-    <comp lib="0" loc="(520,710)" name="Tunnel">
-      <a name="label" val="SLT"/>
-    </comp>
-    <comp lib="0" loc="(320,370)" name="Pin">
+    <comp lib="0" loc="(950,740)" name="Constant">
       <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="RegDst"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="3" loc="(140,540)" name="Comparator">
-      <a name="width" val="6"/>
-    </comp>
-    <comp lib="0" loc="(260,40)" name="Pin">
-      <a name="facing" val="south"/>
-      <a name="output" val="true"/>
       <a name="width" val="4"/>
-      <a name="label" val="ALU_OP"/>
-      <a name="labelloc" val="east"/>
+      <a name="value" val="0xb"/>
     </comp>
-    <comp lib="6" loc="(942,448)" name="Text">
-      <a name="text" val="根据指令译码信号实现控制器输出控制信号的逻辑"/>
-      <a name="font" val="SansSerif bold 14"/>
+    <comp lib="0" loc="(510,540)" name="Tunnel">
+      <a name="facing" val="south"/>
+      <a name="label" val="R_TYPE"/>
     </comp>
-    <comp lib="3" loc="(140,780)" name="Comparator">
+    <comp lib="3" loc="(400,600)" name="Comparator">
       <a name="width" val="6"/>
+    </comp>
+    <comp lib="0" loc="(540,690)" name="Tunnel">
+      <a name="label" val="ADD"/>
     </comp>
     <comp lib="0" loc="(180,540)" name="Tunnel">
       <a name="label" val="LW"/>
     </comp>
-    <comp lib="0" loc="(570,370)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="MemWrite"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(500,570)" name="Tunnel">
-      <a name="label" val="R_TYPE"/>
-    </comp>
-    <comp lib="0" loc="(180,600)" name="Tunnel">
-      <a name="label" val="SW"/>
-    </comp>
-    <comp lib="3" loc="(140,840)" name="Comparator">
+    <comp lib="0" loc="(80,520)" name="Tunnel">
+      <a name="facing" val="south"/>
       <a name="width" val="6"/>
+      <a name="label" val="OP"/>
     </comp>
-    <comp lib="6" loc="(1011,386)" name="Text">
-      <a name="text" val="控制信号"/>
+    <comp lib="1" loc="(670,340)" name="OR Gate">
+      <a name="facing" val="south"/>
+      <a name="size" val="30"/>
+      <a name="inputs" val="3"/>
+    </comp>
+    <comp lib="0" loc="(670,600)" name="Constant">
+      <a name="width" val="6"/>
+      <a name="value" val="0x0"/>
+    </comp>
+    <comp lib="6" loc="(171,311)" name="Text">
+      <a name="text" val="指令译码信号"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp lib="0" loc="(260,50)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="width" val="4"/>
+      <a name="label" val="ALU_OP"/>
+    </comp>
+    <comp lib="6" loc="(368,906)" name="Text">
+      <a name="text" val="给出简单的逻辑实现对应指令译码信号，LW、SW、BEQ、BNE、ADDI、ADD、SLT、SYSCALL、R_TYPE。"/>
       <a name="font" val="SansSerif bold 14"/>
     </comp>
     <comp lib="0" loc="(160,170)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="ADDI"/>
     </comp>
-    <comp lib="0" loc="(80,520)" name="Tunnel">
-      <a name="facing" val="south"/>
+    <comp lib="3" loc="(400,680)" name="Comparator">
       <a name="width" val="6"/>
-      <a name="label" val="OP"/>
     </comp>
     <comp lib="0" loc="(170,40)" name="Pin">
       <a name="facing" val="south"/>
@@ -467,48 +935,34 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="tristate" val="false"/>
       <a name="label" val="Func"/>
     </comp>
-    <comp lib="0" loc="(180,660)" name="Tunnel">
-      <a name="label" val="BEQ"/>
+    <comp lib="6" loc="(867,931)" name="Text">
+      <a name="text" val="注意R_TYPE表示R型运算指令，SYSCALL是特殊的R型指令，不属于这个类别"/>
+      <a name="font" val="SansSerif bold 14"/>
     </comp>
-    <comp lib="0" loc="(820,370)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="Bne"/>
-      <a name="labelloc" val="east"/>
+    <comp lib="0" loc="(480,830)" name="Tunnel">
+      <a name="label" val="SysCall"/>
     </comp>
-    <comp lib="0" loc="(1030,680)" name="Tunnel">
-      <a name="width" val="4"/>
-      <a name="label" val="ALU_OP"/>
+    <comp lib="6" loc="(1011,386)" name="Text">
+      <a name="text" val="控制信号"/>
+      <a name="font" val="SansSerif bold 14"/>
     </comp>
-    <comp lib="0" loc="(930,370)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="Halt"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(70,50)" name="Tunnel">
-      <a name="facing" val="north"/>
+    <comp lib="0" loc="(60,550)" name="Constant">
       <a name="width" val="6"/>
+      <a name="value" val="0x23"/>
+    </comp>
+    <comp lib="0" loc="(330,610)" name="Constant">
+      <a name="width" val="6"/>
+      <a name="value" val="0x2a"/>
+    </comp>
+    <comp lib="0" loc="(60,730)" name="Constant">
+      <a name="width" val="6"/>
+      <a name="value" val="0x5"/>
+    </comp>
+    <comp lib="0" loc="(70,40)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="width" val="6"/>
+      <a name="tristate" val="false"/>
       <a name="label" val="OP"/>
-    </comp>
-    <comp lib="0" loc="(160,210)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="SW"/>
-    </comp>
-    <comp lib="6" loc="(171,311)" name="Text">
-      <a name="text" val="指令译码信号"/>
-      <a name="font" val="SansSerif bold 14"/>
-    </comp>
-    <comp lib="6" loc="(313,320)" name="Text"/>
-    <comp lib="0" loc="(460,370)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="MemToReg"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="6" loc="(932,867)" name="Text">
-      <a name="text" val="给出简单的逻辑实现ALU_OP与OP、Func之间的对应关系"/>
-      <a name="font" val="SansSerif bold 14"/>
     </comp>
     <comp lib="0" loc="(160,250)" name="Tunnel">
       <a name="facing" val="east"/>
@@ -517,35 +971,136 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <comp lib="0" loc="(180,720)" name="Tunnel">
       <a name="label" val="BNE"/>
     </comp>
-    <comp lib="0" loc="(170,50)" name="Tunnel">
+    <comp lib="0" loc="(180,660)" name="Tunnel">
+      <a name="label" val="BEQ"/>
+    </comp>
+    <comp lib="0" loc="(180,600)" name="Tunnel">
+      <a name="label" val="SW"/>
+    </comp>
+    <comp lib="0" loc="(260,40)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="output" val="true"/>
+      <a name="width" val="4"/>
+      <a name="label" val="ALU_OP"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="3" loc="(790,720)" name="Comparator">
+      <a name="width" val="6"/>
+    </comp>
+    <comp lib="1" loc="(490,610)" name="AND Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="0" loc="(70,50)" name="Tunnel">
       <a name="facing" val="north"/>
+      <a name="width" val="6"/>
+      <a name="label" val="OP"/>
+    </comp>
+    <comp lib="1" loc="(400,340)" name="OR Gate">
+      <a name="facing" val="south"/>
+      <a name="size" val="30"/>
+      <a name="inputs" val="3"/>
+    </comp>
+    <comp lib="0" loc="(690,710)" name="Tunnel">
+      <a name="facing" val="east"/>
       <a name="width" val="6"/>
       <a name="label" val="FUNC"/>
     </comp>
-    <comp lib="0" loc="(190,190)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="LW"/>
-    </comp>
-    <comp lib="6" loc="(867,931)" name="Text">
-      <a name="text" val="注意R_TYPE表示R型运算指令，SYSCALL是特殊的R型指令，不属于这个类别"/>
-      <a name="font" val="SansSerif bold 14"/>
-    </comp>
-    <comp lib="0" loc="(210,270)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="SysCall"/>
-    </comp>
-    <comp lib="0" loc="(520,640)" name="Tunnel">
-      <a name="label" val="ADD"/>
-    </comp>
-    <comp lib="0" loc="(260,50)" name="Tunnel">
-      <a name="facing" val="north"/>
-      <a name="width" val="4"/>
-      <a name="label" val="ALU_OP"/>
+    <comp lib="0" loc="(330,690)" name="Constant">
+      <a name="width" val="6"/>
+      <a name="value" val="0x20"/>
     </comp>
     <comp lib="0" loc="(290,750)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="width" val="6"/>
       <a name="label" val="FUNC"/>
+    </comp>
+    <comp lib="1" loc="(490,690)" name="AND Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="0" loc="(820,370)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="Bne"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(320,370)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="RegDst"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(930,370)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="Halt"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(170,50)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="width" val="6"/>
+      <a name="label" val="FUNC"/>
+    </comp>
+    <comp lib="6" loc="(942,448)" name="Text">
+      <a name="text" val="根据指令译码信号实现控制器输出控制信号的逻辑"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp lib="0" loc="(930,740)" name="Constant">
+      <a name="facing" val="north"/>
+      <a name="width" val="4"/>
+      <a name="value" val="0x5"/>
+    </comp>
+    <comp lib="0" loc="(160,210)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="SW"/>
+    </comp>
+    <comp lib="3" loc="(140,660)" name="Comparator">
+      <a name="width" val="6"/>
+    </comp>
+    <comp lib="6" loc="(310,498)" name="Text">
+      <a name="text" val="指令译码逻辑"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp lib="3" loc="(750,590)" name="Comparator">
+      <a name="width" val="6"/>
+    </comp>
+    <comp lib="6" loc="(313,320)" name="Text"/>
+    <comp lib="3" loc="(140,540)" name="Comparator">
+      <a name="width" val="6"/>
+    </comp>
+    <comp lib="0" loc="(760,370)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="Beq"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(60,610)" name="Constant">
+      <a name="width" val="6"/>
+      <a name="value" val="0x2b"/>
+    </comp>
+    <comp lib="0" loc="(60,790)" name="Constant">
+      <a name="width" val="6"/>
+      <a name="value" val="0x8"/>
+    </comp>
+    <comp lib="0" loc="(400,370)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="RegWrite"/>
+      <a name="labelloc" val="south"/>
+    </comp>
+    <comp lib="0" loc="(200,230)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="BEQ"/>
+    </comp>
+    <comp lib="1" loc="(470,830)" name="AND Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="1" loc="(510,550)" name="OR Gate">
+      <a name="facing" val="north"/>
+      <a name="size" val="30"/>
+      <a name="inputs" val="2"/>
     </comp>
   </circuit>
   <circuit name="◇多周期MIPS(微程序)">
@@ -586,36 +1141,14 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(850,190)" to="(870,190)"/>
     <wire from="(850,350)" to="(870,350)"/>
     <wire from="(480,40)" to="(550,40)"/>
-    <comp lib="0" loc="(850,350)" name="Probe">
-      <a name="label" val="微地址"/>
+    <comp lib="6" loc="(942,274)" name="Text">
+      <a name="text" val="AluOP"/>
     </comp>
-    <comp lib="4" loc="(360,220)" name="Register">
-      <a name="width" val="32"/>
-      <a name="label" val="IR"/>
-      <a name="labelfont" val="SansSerif bold 12"/>
-    </comp>
-    <comp lib="0" loc="(270,40)" name="Tunnel">
-      <a name="label" val="CLK"/>
-    </comp>
-    <comp lib="6" loc="(838,245)" name="Text">
-      <a name="text" val="MemWrite"/>
-    </comp>
-    <comp lib="0" loc="(730,310)" name="Tunnel">
+    <comp loc="(680,270)" name="◆MIPS ALU"/>
+    <comp lib="0" loc="(550,340)" name="Tunnel">
       <a name="facing" val="north"/>
       <a name="label" val="CLK"/>
       <a name="labelfont" val="SansSerif plain 10"/>
-    </comp>
-    <comp lib="0" loc="(480,40)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="width" val="16"/>
-      <a name="label" val="总周期数"/>
-    </comp>
-    <comp lib="0" loc="(550,40)" name="Probe">
-      <a name="facing" val="west"/>
-      <a name="radix" val="10unsigned"/>
-    </comp>
-    <comp lib="6" loc="(854,378)" name="Text">
-      <a name="text" val="RegDst"/>
     </comp>
     <comp lib="4" loc="(570,310)" name="Register">
       <a name="width" val="32"/>
@@ -625,54 +1158,32 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <comp lib="6" loc="(946,313)" name="Text">
       <a name="text" val="AluSrcA"/>
     </comp>
-    <comp lib="4" loc="(750,270)" name="Register">
-      <a name="width" val="32"/>
-      <a name="label" val="C"/>
-      <a name="labelfont" val="SansSerif bold 12"/>
-    </comp>
-    <comp lib="4" loc="(570,220)" name="Register">
-      <a name="width" val="32"/>
-      <a name="label" val="A"/>
-      <a name="labelfont" val="SansSerif bold 12"/>
-    </comp>
-    <comp lib="6" loc="(941,255)" name="Text">
-      <a name="text" val="PcSrc"/>
-    </comp>
-    <comp lib="4" loc="(270,260)" name="RAM">
-      <a name="addrWidth" val="10"/>
-      <a name="dataWidth" val="32"/>
-      <a name="bus" val="separate"/>
+    <comp lib="0" loc="(270,40)" name="Tunnel">
+      <a name="label" val="CLK"/>
     </comp>
     <comp lib="6" loc="(947,375)" name="Text">
       <a name="text" val="MemToReg"/>
     </comp>
-    <comp lib="6" loc="(950,334)" name="Text">
-      <a name="text" val="RegWrite"/>
-    </comp>
-    <comp lib="0" loc="(60,340)" name="Tunnel">
-      <a name="facing" val="north"/>
-      <a name="label" val="CLK"/>
-      <a name="labelfont" val="SansSerif plain 10"/>
-    </comp>
-    <comp loc="(910,230)" name="◇多周期微程序控制器"/>
-    <comp lib="0" loc="(340,250)" name="Tunnel">
-      <a name="facing" val="north"/>
-      <a name="label" val="CLK"/>
-      <a name="labelfont" val="SansSerif plain 10"/>
-    </comp>
-    <comp lib="6" loc="(942,274)" name="Text">
-      <a name="text" val="AluOP"/>
+    <comp lib="6" loc="(857,304)" name="Text">
+      <a name="text" val="OP"/>
     </comp>
     <comp lib="6" loc="(935,216)" name="Text">
       <a name="text" val="Beq"/>
     </comp>
-    <comp lib="0" loc="(200,310)" name="Tunnel">
-      <a name="facing" val="north"/>
+    <comp lib="4" loc="(360,220)" name="Register">
+      <a name="width" val="32"/>
+      <a name="label" val="IR"/>
+      <a name="labelfont" val="SansSerif bold 12"/>
+    </comp>
+    <comp lib="0" loc="(810,210)" name="Tunnel">
+      <a name="facing" val="east"/>
       <a name="label" val="CLK"/>
       <a name="labelfont" val="SansSerif plain 10"/>
     </comp>
-    <comp loc="(500,230)" name="◆MIPS Regifile"/>
-    <comp lib="0" loc="(550,250)" name="Tunnel">
+    <comp lib="6" loc="(838,265)" name="Text">
+      <a name="text" val="MemRead"/>
+    </comp>
+    <comp lib="0" loc="(340,250)" name="Tunnel">
       <a name="facing" val="north"/>
       <a name="label" val="CLK"/>
       <a name="labelfont" val="SansSerif plain 10"/>
@@ -680,35 +1191,80 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <comp lib="6" loc="(853,325)" name="Text">
       <a name="text" val="Func"/>
     </comp>
-    <comp lib="6" loc="(946,293)" name="Text">
-      <a name="text" val="AluSrcB"/>
+    <comp lib="6" loc="(847,285)" name="Text">
+      <a name="text" val="IRWrite"/>
     </comp>
-    <comp lib="4" loc="(360,310)" name="Register">
+    <comp lib="6" loc="(854,378)" name="Text">
+      <a name="text" val="RegDst"/>
+    </comp>
+    <comp lib="4" loc="(80,250)" name="Register">
       <a name="width" val="32"/>
-      <a name="label" val="DR"/>
+      <a name="label" val="PC"/>
       <a name="labelfont" val="SansSerif bold 12"/>
     </comp>
-    <comp lib="6" loc="(345,89)" name="Text">
-      <a name="text" val="Ctrl+K  Command+K触发时钟连续仿真，程序运行结束后可停机，查看数据存储器中80单元的排序情况是有符号降序"/>
+    <comp lib="6" loc="(950,334)" name="Text">
+      <a name="text" val="RegWrite"/>
     </comp>
-    <comp lib="0" loc="(110,40)" name="Tunnel">
-      <a name="label" val="RST"/>
+    <comp lib="5" loc="(60,40)" name="Button">
+      <a name="color" val="#11ff29"/>
+      <a name="label" val="总复位"/>
+      <a name="labelloc" val="south"/>
+      <a name="labelcolor" val="#ff0a08"/>
+    </comp>
+    <comp lib="0" loc="(730,310)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="label" val="CLK"/>
+      <a name="labelfont" val="SansSerif plain 10"/>
+    </comp>
+    <comp lib="4" loc="(750,270)" name="Register">
+      <a name="width" val="32"/>
+      <a name="label" val="C"/>
+      <a name="labelfont" val="SansSerif bold 12"/>
     </comp>
     <comp lib="0" loc="(850,190)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="RST"/>
       <a name="labelfont" val="SansSerif plain 10"/>
     </comp>
-    <comp lib="6" loc="(838,265)" name="Text">
-      <a name="text" val="MemRead"/>
+    <comp lib="0" loc="(850,350)" name="Probe">
+      <a name="label" val="微地址"/>
+    </comp>
+    <comp lib="0" loc="(230,40)" name="Clock"/>
+    <comp loc="(500,230)" name="◆MIPS Regifile"/>
+    <comp lib="6" loc="(946,293)" name="Text">
+      <a name="text" val="AluSrcB"/>
+    </comp>
+    <comp loc="(910,230)" name="◇多周期微程序控制器"/>
+    <comp lib="0" loc="(550,250)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="label" val="CLK"/>
+      <a name="labelfont" val="SansSerif plain 10"/>
+    </comp>
+    <comp lib="6" loc="(941,255)" name="Text">
+      <a name="text" val="PcSrc"/>
+    </comp>
+    <comp lib="4" loc="(360,310)" name="Register">
+      <a name="width" val="32"/>
+      <a name="label" val="DR"/>
+      <a name="labelfont" val="SansSerif bold 12"/>
+    </comp>
+    <comp lib="0" loc="(200,310)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="label" val="CLK"/>
+      <a name="labelfont" val="SansSerif plain 10"/>
     </comp>
     <comp lib="6" loc="(852,225)" name="Text">
       <a name="text" val="IorD"/>
     </comp>
-    <comp lib="6" loc="(857,304)" name="Text">
-      <a name="text" val="OP"/>
+    <comp lib="6" loc="(345,89)" name="Text">
+      <a name="text" val="Ctrl+K  Command+K触发时钟连续仿真，程序运行结束后可停机，查看数据存储器中80单元的排序情况是有符号降序"/>
     </comp>
-    <comp lib="0" loc="(340,360)" name="Tunnel">
+    <comp lib="4" loc="(270,260)" name="RAM">
+      <a name="addrWidth" val="10"/>
+      <a name="dataWidth" val="32"/>
+      <a name="bus" val="separate"/>
+    </comp>
+    <comp lib="0" loc="(60,340)" name="Tunnel">
       <a name="facing" val="north"/>
       <a name="label" val="CLK"/>
       <a name="labelfont" val="SansSerif plain 10"/>
@@ -716,38 +1272,37 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <comp lib="6" loc="(935,236)" name="Text">
       <a name="text" val="Bne"/>
     </comp>
-    <comp lib="4" loc="(80,250)" name="Register">
-      <a name="width" val="32"/>
-      <a name="label" val="PC"/>
-      <a name="labelfont" val="SansSerif bold 12"/>
-    </comp>
-    <comp lib="0" loc="(550,340)" name="Tunnel">
-      <a name="facing" val="north"/>
-      <a name="label" val="CLK"/>
-      <a name="labelfont" val="SansSerif plain 10"/>
-    </comp>
-    <comp loc="(680,270)" name="◆MIPS ALU"/>
-    <comp lib="5" loc="(60,40)" name="Button">
-      <a name="color" val="#11ff29"/>
-      <a name="label" val="总复位"/>
-      <a name="labelloc" val="south"/>
-      <a name="labelcolor" val="#ff0a08"/>
-    </comp>
-    <comp lib="0" loc="(230,40)" name="Clock"/>
     <comp lib="6" loc="(203,212)" name="Text">
       <a name="text" val="存储器"/>
       <a name="font" val="SansSerif bold 12"/>
     </comp>
-    <comp lib="6" loc="(847,285)" name="Text">
-      <a name="text" val="IRWrite"/>
-    </comp>
     <comp lib="6" loc="(945,196)" name="Text">
       <a name="text" val="PcWrite"/>
     </comp>
-    <comp lib="0" loc="(810,210)" name="Tunnel">
+    <comp lib="4" loc="(570,220)" name="Register">
+      <a name="width" val="32"/>
+      <a name="label" val="A"/>
+      <a name="labelfont" val="SansSerif bold 12"/>
+    </comp>
+    <comp lib="0" loc="(480,40)" name="Tunnel">
       <a name="facing" val="east"/>
+      <a name="width" val="16"/>
+      <a name="label" val="总周期数"/>
+    </comp>
+    <comp lib="0" loc="(340,360)" name="Tunnel">
+      <a name="facing" val="north"/>
       <a name="label" val="CLK"/>
       <a name="labelfont" val="SansSerif plain 10"/>
+    </comp>
+    <comp lib="6" loc="(838,245)" name="Text">
+      <a name="text" val="MemWrite"/>
+    </comp>
+    <comp lib="0" loc="(550,40)" name="Probe">
+      <a name="facing" val="west"/>
+      <a name="radix" val="10unsigned"/>
+    </comp>
+    <comp lib="0" loc="(110,40)" name="Tunnel">
+      <a name="label" val="RST"/>
     </comp>
   </circuit>
   <circuit name="◇多周期微程序控制器">
@@ -880,88 +1435,88 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(80,510)" to="(80,570)"/>
     <wire from="(80,750)" to="(80,810)"/>
     <wire from="(940,150)" to="(1020,150)"/>
+    <comp lib="0" loc="(990,100)" name="Splitter">
+      <a name="facing" val="north"/>
+      <a name="fanout" val="4"/>
+      <a name="incoming" val="4"/>
+    </comp>
+    <comp lib="4" loc="(550,260)" name="Register">
+      <a name="width" val="4"/>
+    </comp>
+    <comp lib="0" loc="(1020,160)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="width" val="2"/>
+      <a name="label" val="ALU_Control"/>
+    </comp>
+    <comp lib="0" loc="(270,70)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="width" val="4"/>
+      <a name="label" val="ALU_OP"/>
+    </comp>
+    <comp lib="0" loc="(180,520)" name="Tunnel">
+      <a name="label" val="LW"/>
+    </comp>
+    <comp lib="0" loc="(80,500)" name="Tunnel">
+      <a name="facing" val="south"/>
+      <a name="width" val="6"/>
+      <a name="label" val="OP"/>
+    </comp>
+    <comp lib="6" loc="(1034,91)" name="Text">
+      <a name="text" val="下址字段"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp lib="0" loc="(250,50)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="4"/>
+      <a name="label" val="ALU_OP"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="6" loc="(864,509)" name="Text">
+      <a name="text" val="根据ALU_Control的值决定运算器运算选择控制信号ALU_OP的值"/>
+      <a name="font" val="SansSerif plain 14"/>
+    </comp>
+    <comp lib="2" loc="(490,260)" name="Multiplexer">
+      <a name="width" val="4"/>
+      <a name="enable" val="false"/>
+    </comp>
+    <comp lib="6" loc="(406,287)" name="Text">
+      <a name="text" val="微程序入口地址"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp lib="0" loc="(940,150)" name="Splitter">
+      <a name="facing" val="north"/>
+    </comp>
+    <comp lib="0" loc="(910,150)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="Bne"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(520,750)" name="Tunnel">
+      <a name="label" val="SysCall"/>
+    </comp>
+    <comp lib="0" loc="(840,350)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="2"/>
+      <a name="label" val="AluSrcB"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(500,530)" name="Tunnel">
+      <a name="label" val="R_TYPE"/>
+    </comp>
+    <comp lib="0" loc="(970,120)" name="Tunnel">
+      <a name="label" val="P"/>
+    </comp>
     <comp lib="0" loc="(170,60)" name="Pin">
       <a name="facing" val="south"/>
       <a name="width" val="6"/>
       <a name="tristate" val="false"/>
       <a name="label" val="Func"/>
     </comp>
-    <comp lib="6" loc="(1028,136)" name="Text">
-      <a name="text" val="判断逻辑"/>
-      <a name="font" val="SansSerif bold 14"/>
-    </comp>
-    <comp lib="6" loc="(864,509)" name="Text">
-      <a name="text" val="根据ALU_Control的值决定运算器运算选择控制信号ALU_OP的值"/>
-      <a name="font" val="SansSerif plain 14"/>
-    </comp>
-    <comp lib="0" loc="(110,290)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="BEQ"/>
-    </comp>
-    <comp lib="3" loc="(140,640)" name="Comparator">
-      <a name="width" val="6"/>
-    </comp>
-    <comp lib="0" loc="(530,320)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="CLK"/>
-    </comp>
-    <comp lib="2" loc="(490,260)" name="Multiplexer">
-      <a name="width" val="4"/>
-      <a name="enable" val="false"/>
-    </comp>
-    <comp lib="3" loc="(140,820)" name="Comparator">
-      <a name="width" val="6"/>
-    </comp>
-    <comp lib="6" loc="(471,360)" name="Text">
-      <a name="text" val="判断逻辑"/>
-      <a name="font" val="SansSerif bold 14"/>
-    </comp>
-    <comp lib="4" loc="(550,260)" name="Register">
-      <a name="width" val="4"/>
-    </comp>
-    <comp lib="0" loc="(800,360)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="AluSrcA"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(180,580)" name="Tunnel">
-      <a name="label" val="SW"/>
-    </comp>
-    <comp lib="0" loc="(70,270)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="SW"/>
-    </comp>
-    <comp lib="0" loc="(850,270)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="IrWrite"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="3" loc="(140,760)" name="Comparator">
-      <a name="width" val="6"/>
-    </comp>
-    <comp lib="0" loc="(70,60)" name="Pin">
-      <a name="facing" val="south"/>
-      <a name="width" val="6"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="OP"/>
-    </comp>
-    <comp lib="0" loc="(80,310)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="BNE"/>
-    </comp>
-    <comp lib="2" loc="(1000,630)" name="Multiplexer">
-      <a name="select" val="2"/>
-      <a name="width" val="4"/>
-      <a name="enable" val="false"/>
-    </comp>
-    <comp lib="0" loc="(180,700)" name="Tunnel">
-      <a name="label" val="BNE"/>
-    </comp>
-    <comp lib="0" loc="(940,150)" name="Splitter">
-      <a name="facing" val="north"/>
+    <comp lib="0" loc="(520,690)" name="Tunnel">
+      <a name="label" val="SLT"/>
     </comp>
     <comp lib="0" loc="(880,210)" name="Pin">
       <a name="facing" val="north"/>
@@ -969,9 +1524,114 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="label" val="MemWrite"/>
       <a name="labelloc" val="east"/>
     </comp>
-    <comp lib="0" loc="(100,250)" name="Tunnel">
+    <comp lib="0" loc="(1010,630)" name="Tunnel">
+      <a name="width" val="4"/>
+      <a name="label" val="ALU_OP"/>
+    </comp>
+    <comp lib="0" loc="(570,330)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="width" val="4"/>
+      <a name="label" val="当前微指令地址"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(80,310)" name="Tunnel">
       <a name="facing" val="east"/>
-      <a name="label" val="LW"/>
+      <a name="label" val="BNE"/>
+    </comp>
+    <comp lib="3" loc="(140,520)" name="Comparator">
+      <a name="width" val="6"/>
+    </comp>
+    <comp lib="0" loc="(70,270)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="SW"/>
+    </comp>
+    <comp lib="6" loc="(424,241)" name="Text">
+      <a name="text" val="下址字段"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp lib="0" loc="(130,210)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="R_TYPE"/>
+    </comp>
+    <comp lib="0" loc="(540,370)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="RST"/>
+    </comp>
+    <comp lib="6" loc="(535,229)" name="Text">
+      <a name="text" val="μAR"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp lib="0" loc="(180,580)" name="Tunnel">
+      <a name="label" val="SW"/>
+    </comp>
+    <comp lib="0" loc="(860,250)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="PcWrite"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="3" loc="(140,640)" name="Comparator">
+      <a name="width" val="6"/>
+    </comp>
+    <comp lib="0" loc="(60,830)" name="Constant">
+      <a name="width" val="6"/>
+      <a name="value" val="0x0"/>
+    </comp>
+    <comp lib="6" loc="(1004,760)" name="Text">
+      <a name="text" val="ALU_Control= 01 运算器做减法"/>
+    </comp>
+    <comp lib="6" loc="(102,184)" name="Text">
+      <a name="text" val="指令译码信号"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp lib="6" loc="(867,911)" name="Text">
+      <a name="text" val="注意R_TYPE表示R型运算指令，SYSCALL是特殊的R型指令，不属于这个类别"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp lib="0" loc="(310,640)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="width" val="6"/>
+      <a name="label" val="FUNC"/>
+    </comp>
+    <comp lib="0" loc="(70,70)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="width" val="6"/>
+      <a name="label" val="OP"/>
+    </comp>
+    <comp lib="0" loc="(170,70)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="width" val="6"/>
+      <a name="label" val="FUNC"/>
+    </comp>
+    <comp lib="0" loc="(850,270)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="IrWrite"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(70,60)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="width" val="6"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="OP"/>
+    </comp>
+    <comp lib="0" loc="(470,310)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="label" val="P"/>
+    </comp>
+    <comp lib="3" loc="(140,820)" name="Comparator">
+      <a name="width" val="6"/>
+    </comp>
+    <comp lib="0" loc="(790,380)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="PCsrc"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(180,700)" name="Tunnel">
+      <a name="label" val="BNE"/>
     </comp>
     <comp lib="0" loc="(350,270)" name="Splitter">
       <a name="facing" val="west"/>
@@ -983,13 +1643,123 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="bit2" val="1"/>
       <a name="bit3" val="0"/>
     </comp>
+    <comp lib="0" loc="(100,250)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="LW"/>
+    </comp>
+    <comp lib="6" loc="(889,60)" name="Text">
+      <a name="text" val="微指令"/>
+      <a name="font" val="SansSerif bold 20"/>
+    </comp>
+    <comp lib="0" loc="(530,320)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="CLK"/>
+    </comp>
+    <comp lib="6" loc="(858,478)" name="Text">
+      <a name="text" val="ALU控制器逻辑"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp lib="0" loc="(840,290)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="RegDst"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(870,230)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="RegWrite"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(770,60)" name="Splitter">
+      <a name="facing" val="south"/>
+      <a name="fanout" val="21"/>
+      <a name="incoming" val="21"/>
+    </comp>
+    <comp lib="6" loc="(1025,781)" name="Text">
+      <a name="text" val="ALU_Control= 10 运算方式由Func决定 "/>
+    </comp>
+    <comp lib="6" loc="(865,415)" name="Text">
+      <a name="text" val="微命令"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp lib="6" loc="(659,212)" name="Text">
+      <a name="text" val="微程序控制器"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp lib="6" loc="(313,320)" name="Text"/>
+    <comp lib="3" loc="(140,580)" name="Comparator">
+      <a name="width" val="6"/>
+    </comp>
+    <comp lib="6" loc="(368,886)" name="Text">
+      <a name="text" val="给出简单的逻辑实现对应指令译码信号，LW、SW、BEQ、BNE、ADDI、ADD、SLT、SYSCALL、R_TYPE。"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp lib="0" loc="(890,190)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="MemRead"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="3" loc="(140,760)" name="Comparator">
+      <a name="width" val="6"/>
+    </comp>
+    <comp lib="0" loc="(800,360)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="AluSrcA"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(120,330)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="SysCall"/>
+    </comp>
+    <comp lib="0" loc="(980,690)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="width" val="2"/>
+      <a name="label" val="ALU_Control"/>
+    </comp>
+    <comp lib="6" loc="(1003,740)" name="Text">
+      <a name="text" val="ALU_Control= 00 运算器做加法"/>
+    </comp>
+    <comp lib="0" loc="(180,760)" name="Tunnel">
+      <a name="label" val="ADDI"/>
+    </comp>
+    <comp lib="6" loc="(310,478)" name="Text">
+      <a name="text" val="指令译码逻辑"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
     <comp lib="0" loc="(90,230)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="ADDI"/>
     </comp>
-    <comp lib="0" loc="(470,310)" name="Tunnel">
+    <comp lib="0" loc="(900,170)" name="Pin">
       <a name="facing" val="north"/>
-      <a name="label" val="P"/>
+      <a name="output" val="true"/>
+      <a name="label" val="Beq"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(830,350)" name="Splitter">
+      <a name="facing" val="north"/>
+    </comp>
+    <comp lib="0" loc="(110,290)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="BEQ"/>
+    </comp>
+    <comp loc="(310,260)" name="◇微程序地址转移逻辑"/>
+    <comp lib="0" loc="(830,310)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="MemToReg"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="6" loc="(263,369)" name="Text">
+      <a name="text" val="根据指令进行微程序地址转移"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp lib="0" loc="(520,630)" name="Tunnel">
+      <a name="label" val="ADD"/>
     </comp>
     <comp lib="4" loc="(730,260)" name="ROM">
       <a name="addrWidth" val="4"/>
@@ -999,250 +1769,35 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
 0 20 1fffa0 c 0 d
 </a>
     </comp>
-    <comp lib="0" loc="(890,190)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="MemRead"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="6" loc="(102,184)" name="Text">
-      <a name="text" val="指令译码信号"/>
-      <a name="font" val="SansSerif bold 14"/>
+    <comp lib="3" loc="(140,700)" name="Comparator">
+      <a name="width" val="6"/>
     </comp>
     <comp lib="0" loc="(180,640)" name="Tunnel">
       <a name="label" val="BEQ"/>
     </comp>
-    <comp lib="6" loc="(406,287)" name="Text">
-      <a name="text" val="微程序入口地址"/>
+    <comp lib="6" loc="(471,360)" name="Text">
+      <a name="text" val="判断逻辑"/>
       <a name="font" val="SansSerif bold 14"/>
-    </comp>
-    <comp lib="6" loc="(889,60)" name="Text">
-      <a name="text" val="微指令"/>
-      <a name="font" val="SansSerif bold 20"/>
-    </comp>
-    <comp loc="(310,260)" name="◇微程序地址转移逻辑"/>
-    <comp lib="0" loc="(270,70)" name="Tunnel">
-      <a name="facing" val="north"/>
-      <a name="width" val="4"/>
-      <a name="label" val="ALU_OP"/>
-    </comp>
-    <comp lib="6" loc="(313,320)" name="Text"/>
-    <comp lib="0" loc="(900,170)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="Beq"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="6" loc="(858,478)" name="Text">
-      <a name="text" val="ALU控制器逻辑"/>
-      <a name="font" val="SansSerif bold 14"/>
-    </comp>
-    <comp lib="0" loc="(1010,630)" name="Tunnel">
-      <a name="width" val="4"/>
-      <a name="label" val="ALU_OP"/>
-    </comp>
-    <comp lib="0" loc="(830,310)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="MemToReg"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="6" loc="(659,212)" name="Text">
-      <a name="text" val="微程序控制器"/>
-      <a name="font" val="SansSerif bold 14"/>
-    </comp>
-    <comp lib="0" loc="(970,120)" name="Tunnel">
-      <a name="label" val="P"/>
-    </comp>
-    <comp lib="0" loc="(180,760)" name="Tunnel">
-      <a name="label" val="ADDI"/>
-    </comp>
-    <comp lib="3" loc="(140,580)" name="Comparator">
-      <a name="width" val="6"/>
     </comp>
     <comp lib="0" loc="(680,700)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="width" val="6"/>
       <a name="label" val="FUNC"/>
     </comp>
-    <comp lib="0" loc="(500,530)" name="Tunnel">
-      <a name="label" val="R_TYPE"/>
-    </comp>
-    <comp lib="0" loc="(990,100)" name="Splitter">
-      <a name="facing" val="north"/>
-      <a name="fanout" val="4"/>
-      <a name="incoming" val="4"/>
-    </comp>
-    <comp lib="0" loc="(520,750)" name="Tunnel">
-      <a name="label" val="SysCall"/>
-    </comp>
-    <comp lib="6" loc="(1003,740)" name="Text">
-      <a name="text" val="ALU_Control= 00 运算器做加法"/>
-    </comp>
-    <comp lib="0" loc="(70,70)" name="Tunnel">
-      <a name="facing" val="north"/>
-      <a name="width" val="6"/>
-      <a name="label" val="OP"/>
-    </comp>
-    <comp lib="0" loc="(840,290)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="RegDst"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(860,250)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="PcWrite"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(520,690)" name="Tunnel">
-      <a name="label" val="SLT"/>
-    </comp>
-    <comp lib="0" loc="(770,60)" name="Splitter">
-      <a name="facing" val="south"/>
-      <a name="fanout" val="21"/>
-      <a name="incoming" val="21"/>
-    </comp>
-    <comp lib="0" loc="(80,500)" name="Tunnel">
-      <a name="facing" val="south"/>
-      <a name="width" val="6"/>
-      <a name="label" val="OP"/>
-    </comp>
-    <comp lib="6" loc="(1025,781)" name="Text">
-      <a name="text" val="ALU_Control= 10 运算方式由Func决定 "/>
-    </comp>
-    <comp lib="0" loc="(180,520)" name="Tunnel">
-      <a name="label" val="LW"/>
-    </comp>
-    <comp lib="6" loc="(424,241)" name="Text">
-      <a name="text" val="下址字段"/>
-      <a name="font" val="SansSerif bold 14"/>
-    </comp>
-    <comp lib="0" loc="(540,370)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="RST"/>
-    </comp>
-    <comp lib="6" loc="(865,415)" name="Text">
-      <a name="text" val="微命令"/>
-      <a name="font" val="SansSerif bold 14"/>
-    </comp>
-    <comp lib="0" loc="(60,830)" name="Constant">
-      <a name="width" val="6"/>
-      <a name="value" val="0x0"/>
-    </comp>
-    <comp lib="6" loc="(535,229)" name="Text">
-      <a name="text" val="μAR"/>
-      <a name="font" val="SansSerif bold 14"/>
-    </comp>
-    <comp lib="0" loc="(1020,160)" name="Tunnel">
-      <a name="facing" val="north"/>
-      <a name="width" val="2"/>
-      <a name="label" val="ALU_Control"/>
-    </comp>
-    <comp lib="0" loc="(790,380)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="PCsrc"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(120,330)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="SysCall"/>
-    </comp>
-    <comp lib="0" loc="(250,50)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
+    <comp lib="2" loc="(1000,630)" name="Multiplexer">
+      <a name="select" val="2"/>
       <a name="width" val="4"/>
-      <a name="label" val="ALU_OP"/>
-      <a name="labelloc" val="east"/>
+      <a name="enable" val="false"/>
     </comp>
-    <comp lib="0" loc="(910,150)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="Bne"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(310,640)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="width" val="6"/>
-      <a name="label" val="FUNC"/>
-    </comp>
-    <comp lib="6" loc="(1004,760)" name="Text">
-      <a name="text" val="ALU_Control= 01 运算器做减法"/>
-    </comp>
-    <comp lib="3" loc="(140,700)" name="Comparator">
-      <a name="width" val="6"/>
-    </comp>
-    <comp lib="0" loc="(830,350)" name="Splitter">
-      <a name="facing" val="north"/>
-    </comp>
-    <comp lib="6" loc="(368,886)" name="Text">
-      <a name="text" val="给出简单的逻辑实现对应指令译码信号，LW、SW、BEQ、BNE、ADDI、ADD、SLT、SYSCALL、R_TYPE。"/>
+    <comp lib="6" loc="(1028,136)" name="Text">
+      <a name="text" val="判断逻辑"/>
       <a name="font" val="SansSerif bold 14"/>
-    </comp>
-    <comp lib="0" loc="(520,630)" name="Tunnel">
-      <a name="label" val="ADD"/>
-    </comp>
-    <comp lib="0" loc="(840,350)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="width" val="2"/>
-      <a name="label" val="AluSrcB"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(570,330)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="width" val="4"/>
-      <a name="label" val="当前微指令地址"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="6" loc="(263,369)" name="Text">
-      <a name="text" val="根据指令进行微程序地址转移"/>
-      <a name="font" val="SansSerif bold 14"/>
-    </comp>
-    <comp lib="0" loc="(170,70)" name="Tunnel">
-      <a name="facing" val="north"/>
-      <a name="width" val="6"/>
-      <a name="label" val="FUNC"/>
-    </comp>
-    <comp lib="6" loc="(867,911)" name="Text">
-      <a name="text" val="注意R_TYPE表示R型运算指令，SYSCALL是特殊的R型指令，不属于这个类别"/>
-      <a name="font" val="SansSerif bold 14"/>
-    </comp>
-    <comp lib="6" loc="(310,478)" name="Text">
-      <a name="text" val="指令译码逻辑"/>
-      <a name="font" val="SansSerif bold 14"/>
-    </comp>
-    <comp lib="6" loc="(1034,91)" name="Text">
-      <a name="text" val="下址字段"/>
-      <a name="font" val="SansSerif bold 14"/>
-    </comp>
-    <comp lib="3" loc="(140,520)" name="Comparator">
-      <a name="width" val="6"/>
-    </comp>
-    <comp lib="0" loc="(130,210)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="R_TYPE"/>
     </comp>
     <comp lib="0" loc="(780,400)" name="Pin">
       <a name="facing" val="north"/>
       <a name="output" val="true"/>
       <a name="label" val="IorD"/>
       <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(870,230)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="RegWrite"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(980,690)" name="Tunnel">
-      <a name="facing" val="north"/>
-      <a name="width" val="2"/>
-      <a name="label" val="ALU_Control"/>
     </comp>
   </circuit>
   <circuit name="◇微程序地址转移逻辑">
@@ -1269,15 +1824,35 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(230,100)" to="(250,100)"/>
     <wire from="(230,160)" to="(250,160)"/>
     <wire from="(230,230)" to="(250,230)"/>
-    <comp lib="0" loc="(250,160)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="label" val="S1"/>
+    <comp lib="0" loc="(40,340)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="SYSCALL"/>
       <a name="labelloc" val="north"/>
     </comp>
-    <comp lib="0" loc="(40,130)" name="Pin">
+    <comp lib="0" loc="(250,100)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="S2"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="6" loc="(203,396)" name="Text">
+      <a name="text" val="选择项目菜单中的分析电路----输入表达式自动生成"/>
+      <a name="font" val="SansSerif plain 16"/>
+    </comp>
+    <comp lib="0" loc="(40,290)" name="Pin">
       <a name="tristate" val="false"/>
-      <a name="label" val="LW"/>
+      <a name="label" val="BNE"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(250,40)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="S3"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(40,180)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="SW"/>
       <a name="labelloc" val="north"/>
     </comp>
     <comp lib="0" loc="(250,230)" name="Pin">
@@ -1291,35 +1866,14 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="label" val="BEQ"/>
       <a name="labelloc" val="north"/>
     </comp>
-    <comp lib="0" loc="(40,180)" name="Pin">
-      <a name="tristate" val="false"/>
-      <a name="label" val="SW"/>
-      <a name="labelloc" val="north"/>
-    </comp>
-    <comp lib="0" loc="(250,100)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="label" val="S2"/>
-      <a name="labelloc" val="north"/>
-    </comp>
-    <comp lib="6" loc="(203,396)" name="Text">
-      <a name="text" val="选择项目菜单中的分析电路----输入表达式自动生成"/>
-      <a name="font" val="SansSerif plain 16"/>
-    </comp>
     <comp lib="0" loc="(40,80)" name="Pin">
       <a name="tristate" val="false"/>
       <a name="label" val="ADDI"/>
       <a name="labelloc" val="north"/>
     </comp>
-    <comp lib="0" loc="(250,40)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="label" val="S3"/>
-      <a name="labelloc" val="north"/>
-    </comp>
-    <comp lib="0" loc="(40,340)" name="Pin">
+    <comp lib="0" loc="(40,130)" name="Pin">
       <a name="tristate" val="false"/>
-      <a name="label" val="SYSCALL"/>
+      <a name="label" val="LW"/>
       <a name="labelloc" val="north"/>
     </comp>
     <comp lib="0" loc="(40,30)" name="Pin">
@@ -1327,9 +1881,10 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="label" val="R_Type"/>
       <a name="labelloc" val="north"/>
     </comp>
-    <comp lib="0" loc="(40,290)" name="Pin">
-      <a name="tristate" val="false"/>
-      <a name="label" val="BNE"/>
+    <comp lib="0" loc="(250,160)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="S1"/>
       <a name="labelloc" val="north"/>
     </comp>
   </circuit>
@@ -1345,30 +1900,30 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(230,40)" to="(270,40)"/>
     <wire from="(480,40)" to="(550,40)"/>
     <wire from="(60,40)" to="(110,40)"/>
+    <comp lib="0" loc="(110,40)" name="Tunnel">
+      <a name="label" val="RST"/>
+    </comp>
+    <comp lib="0" loc="(550,40)" name="Probe">
+      <a name="facing" val="west"/>
+      <a name="radix" val="10unsigned"/>
+    </comp>
+    <comp lib="0" loc="(480,40)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="width" val="16"/>
+      <a name="label" val="总周期数"/>
+    </comp>
+    <comp lib="0" loc="(230,40)" name="Clock"/>
     <comp lib="5" loc="(60,40)" name="Button">
       <a name="color" val="#11ff29"/>
       <a name="label" val="总复位"/>
       <a name="labelloc" val="south"/>
       <a name="labelcolor" val="#ff0a08"/>
     </comp>
-    <comp lib="6" loc="(345,89)" name="Text">
-      <a name="text" val="Ctrl+K  Command+K触发时钟连续仿真，程序运行结束后可停机，查看数据存储器中80单元的排序情况是有符号降序"/>
-    </comp>
     <comp lib="6" loc="(354,121)" name="Text">
       <a name="text" val="完成微程序模式的多周期CPU后，将主机架构图复制到本电路中，替换控制器为硬布线控制器"/>
     </comp>
-    <comp lib="0" loc="(550,40)" name="Probe">
-      <a name="facing" val="west"/>
-      <a name="radix" val="10unsigned"/>
-    </comp>
-    <comp lib="0" loc="(230,40)" name="Clock"/>
-    <comp lib="0" loc="(480,40)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="width" val="16"/>
-      <a name="label" val="总周期数"/>
-    </comp>
-    <comp lib="0" loc="(110,40)" name="Tunnel">
-      <a name="label" val="RST"/>
+    <comp lib="6" loc="(345,89)" name="Text">
+      <a name="text" val="Ctrl+K  Command+K触发时钟连续仿真，程序运行结束后可停机，查看数据存储器中80单元的排序情况是有符号降序"/>
     </comp>
     <comp lib="0" loc="(270,40)" name="Tunnel">
       <a name="label" val="CLK"/>
@@ -1505,76 +2060,14 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(220,290)" to="(230,290)"/>
     <wire from="(830,70)" to="(830,320)"/>
     <wire from="(220,290)" to="(220,350)"/>
-    <comp lib="0" loc="(90,330)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="BNE"/>
-    </comp>
-    <comp lib="6" loc="(858,508)" name="Text">
-      <a name="text" val="ALU控制器逻辑"/>
-      <a name="font" val="SansSerif bold 14"/>
-    </comp>
-    <comp lib="0" loc="(950,130)" name="Splitter">
-      <a name="facing" val="north"/>
-    </comp>
-    <comp lib="0" loc="(490,560)" name="Tunnel">
-      <a name="label" val="R_TYPE"/>
-    </comp>
-    <comp lib="6" loc="(1016,820)" name="Text">
-      <a name="text" val="ALU_Control= 10 运算方式由Func决定 "/>
-    </comp>
-    <comp lib="6" loc="(995,799)" name="Text">
-      <a name="text" val="ALU_Control= 01 运算器做减法"/>
-    </comp>
-    <comp lib="3" loc="(140,790)" name="Comparator">
-      <a name="width" val="6"/>
-    </comp>
-    <comp lib="0" loc="(1000,90)" name="Splitter">
-      <a name="facing" val="north"/>
-      <a name="fanout" val="4"/>
-      <a name="incoming" val="4"/>
-    </comp>
-    <comp lib="4" loc="(480,250)" name="Register">
-      <a name="width" val="4"/>
-    </comp>
-    <comp lib="3" loc="(140,850)" name="Comparator">
-      <a name="width" val="6"/>
-    </comp>
-    <comp lib="0" loc="(180,550)" name="Tunnel">
-      <a name="label" val="LW"/>
-    </comp>
-    <comp lib="0" loc="(430,310)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="CLK"/>
-    </comp>
-    <comp lib="0" loc="(840,340)" name="Splitter">
-      <a name="facing" val="north"/>
-    </comp>
-    <comp lib="0" loc="(810,350)" name="Pin">
+    <comp lib="0" loc="(900,180)" name="Pin">
       <a name="facing" val="north"/>
       <a name="output" val="true"/>
-      <a name="label" val="AluSrcA"/>
+      <a name="label" val="MemRead"/>
       <a name="labelloc" val="east"/>
     </comp>
-    <comp lib="0" loc="(70,60)" name="Tunnel">
-      <a name="facing" val="north"/>
+    <comp lib="3" loc="(140,670)" name="Comparator">
       <a name="width" val="6"/>
-      <a name="label" val="OP"/>
-    </comp>
-    <comp lib="0" loc="(60,860)" name="Constant">
-      <a name="width" val="6"/>
-      <a name="value" val="0x0"/>
-    </comp>
-    <comp lib="0" loc="(160,230)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="R_TYPE"/>
-    </comp>
-    <comp lib="0" loc="(180,730)" name="Tunnel">
-      <a name="label" val="BNE"/>
-    </comp>
-    <comp lib="6" loc="(383,201)" name="Text">
-      <a name="text" val="次态"/>
-      <a name="font" val="SansSerif bold 14"/>
     </comp>
     <comp lib="0" loc="(200,180)" name="Splitter">
       <a name="fanout" val="4"/>
@@ -1585,15 +2078,9 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="bit2" val="1"/>
       <a name="bit3" val="0"/>
     </comp>
-    <comp lib="0" loc="(360,210)" name="Splitter">
-      <a name="facing" val="west"/>
-      <a name="fanout" val="4"/>
-      <a name="incoming" val="4"/>
-      <a name="appear" val="center"/>
-      <a name="bit0" val="3"/>
-      <a name="bit1" val="2"/>
-      <a name="bit2" val="1"/>
-      <a name="bit3" val="0"/>
+    <comp lib="0" loc="(130,270)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="LW"/>
     </comp>
     <comp lib="0" loc="(70,50)" name="Pin">
       <a name="facing" val="south"/>
@@ -1601,119 +2088,8 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="tristate" val="false"/>
       <a name="label" val="OP"/>
     </comp>
-    <comp lib="6" loc="(995,778)" name="Text">
-      <a name="text" val="ALU_Control= 00 运算器做加法"/>
-    </comp>
-    <comp lib="6" loc="(862,536)" name="Text">
-      <a name="text" val="根据ALU_Control的值决定运算器运算选择控制信号ALU_OP的值"/>
-      <a name="font" val="SansSerif plain 14"/>
-    </comp>
-    <comp lib="3" loc="(140,670)" name="Comparator">
-      <a name="width" val="6"/>
-    </comp>
-    <comp lib="0" loc="(470,350)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="RST"/>
-    </comp>
-    <comp loc="(340,240)" name="◇状态机FSM"/>
-    <comp lib="0" loc="(260,50)" name="Pin">
-      <a name="facing" val="south"/>
-      <a name="output" val="true"/>
-      <a name="width" val="4"/>
-      <a name="label" val="ALU_OP"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(990,140)" name="Tunnel">
-      <a name="width" val="2"/>
-      <a name="label" val="ALU_Control"/>
-    </comp>
-    <comp lib="0" loc="(800,370)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="PCsrc"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(80,530)" name="Tunnel">
-      <a name="facing" val="south"/>
-      <a name="width" val="6"/>
-      <a name="label" val="OP"/>
-    </comp>
-    <comp lib="0" loc="(850,280)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="RegDst"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(170,50)" name="Pin">
-      <a name="facing" val="south"/>
-      <a name="width" val="6"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="Func"/>
-    </comp>
-    <comp lib="0" loc="(890,200)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="MemWrite"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(530,320)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="width" val="4"/>
-      <a name="label" val="当前状态"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(860,260)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="IrWrite"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(900,180)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="MemRead"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="6" loc="(214,132)" name="Text">
-      <a name="text" val="现态"/>
-      <a name="font" val="SansSerif bold 14"/>
-    </comp>
-    <comp lib="0" loc="(920,140)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="Bne"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(880,220)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="RegWrite"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(790,400)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="label" val="IorD"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(130,270)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="LW"/>
-    </comp>
-    <comp lib="0" loc="(100,290)" name="Tunnel">
-      <a name="facing" val="east"/>
+    <comp lib="0" loc="(180,610)" name="Tunnel">
       <a name="label" val="SW"/>
-    </comp>
-    <comp lib="6" loc="(281,338)" name="Text">
-      <a name="text" val="组合逻辑"/>
-    </comp>
-    <comp lib="0" loc="(520,720)" name="Tunnel">
-      <a name="label" val="SLT"/>
-    </comp>
-    <comp lib="0" loc="(180,670)" name="Tunnel">
-      <a name="label" val="BEQ"/>
     </comp>
     <comp lib="6" loc="(306,515)" name="Text">
       <a name="text" val="指令译码逻辑"/>
@@ -1725,15 +2101,115 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="label" val="Beq"/>
       <a name="labelloc" val="east"/>
     </comp>
+    <comp lib="0" loc="(780,50)" name="Splitter">
+      <a name="facing" val="south"/>
+      <a name="fanout" val="21"/>
+      <a name="incoming" val="21"/>
+    </comp>
     <comp lib="6" loc="(464,219)" name="Text">
       <a name="text" val="状态寄存器"/>
       <a name="font" val="SansSerif bold 14"/>
     </comp>
-    <comp lib="3" loc="(140,730)" name="Comparator">
+    <comp lib="0" loc="(180,670)" name="Tunnel">
+      <a name="label" val="BEQ"/>
+    </comp>
+    <comp lib="6" loc="(651,201)" name="Text">
+      <a name="text" val="微程序控制器"/>
+      <a name="font" val="SansSerif bold 12"/>
+    </comp>
+    <comp lib="0" loc="(790,400)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="IorD"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(290,760)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="width" val="6"/>
+      <a name="label" val="FUNC"/>
+    </comp>
+    <comp loc="(340,240)" name="◇状态机FSM"/>
+    <comp lib="6" loc="(858,508)" name="Text">
+      <a name="text" val="ALU控制器逻辑"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp lib="0" loc="(520,660)" name="Tunnel">
+      <a name="label" val="ADD"/>
+    </comp>
+    <comp lib="6" loc="(862,536)" name="Text">
+      <a name="text" val="根据ALU_Control的值决定运算器运算选择控制信号ALU_OP的值"/>
+      <a name="font" val="SansSerif plain 14"/>
+    </comp>
+    <comp lib="3" loc="(140,550)" name="Comparator">
       <a name="width" val="6"/>
     </comp>
-    <comp lib="0" loc="(520,780)" name="Tunnel">
+    <comp lib="0" loc="(890,200)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="MemWrite"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(490,560)" name="Tunnel">
+      <a name="label" val="R_TYPE"/>
+    </comp>
+    <comp lib="6" loc="(995,799)" name="Text">
+      <a name="text" val="ALU_Control= 01 运算器做减法"/>
+    </comp>
+    <comp lib="0" loc="(800,370)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="PCsrc"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(920,140)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="Bne"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(180,790)" name="Tunnel">
+      <a name="label" val="ADDI"/>
+    </comp>
+    <comp lib="0" loc="(90,330)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="BNE"/>
+    </comp>
+    <comp lib="0" loc="(150,350)" name="Tunnel">
+      <a name="facing" val="east"/>
       <a name="label" val="SysCall"/>
+    </comp>
+    <comp lib="3" loc="(140,790)" name="Comparator">
+      <a name="width" val="6"/>
+    </comp>
+    <comp lib="0" loc="(850,280)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="RegDst"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(260,60)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="width" val="4"/>
+      <a name="label" val="ALU_OP"/>
+    </comp>
+    <comp lib="0" loc="(950,130)" name="Splitter">
+      <a name="facing" val="north"/>
+    </comp>
+    <comp lib="0" loc="(100,290)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="SW"/>
+    </comp>
+    <comp lib="6" loc="(995,778)" name="Text">
+      <a name="text" val="ALU_Control= 00 运算器做加法"/>
+    </comp>
+    <comp lib="0" loc="(430,310)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="CLK"/>
+    </comp>
+    <comp lib="0" loc="(90,250)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="ADDI"/>
     </comp>
     <comp lib="0" loc="(850,340)" name="Pin">
       <a name="facing" val="west"/>
@@ -1742,53 +2218,52 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="label" val="AluSrcB"/>
       <a name="labelloc" val="east"/>
     </comp>
-    <comp lib="0" loc="(980,720)" name="Tunnel">
+    <comp lib="0" loc="(70,60)" name="Tunnel">
       <a name="facing" val="north"/>
-      <a name="width" val="2"/>
-      <a name="label" val="ALU_Control"/>
+      <a name="width" val="6"/>
+      <a name="label" val="OP"/>
     </comp>
-    <comp lib="0" loc="(870,240)" name="Pin">
+    <comp lib="0" loc="(180,730)" name="Tunnel">
+      <a name="label" val="BNE"/>
+    </comp>
+    <comp lib="0" loc="(60,860)" name="Constant">
+      <a name="width" val="6"/>
+      <a name="value" val="0x0"/>
+    </comp>
+    <comp lib="6" loc="(1016,820)" name="Text">
+      <a name="text" val="ALU_Control= 10 运算方式由Func决定 "/>
+    </comp>
+    <comp lib="0" loc="(880,220)" name="Pin">
       <a name="facing" val="north"/>
       <a name="output" val="true"/>
-      <a name="label" val="PcWrite"/>
+      <a name="label" val="RegWrite"/>
       <a name="labelloc" val="east"/>
     </comp>
-    <comp lib="6" loc="(113,193)" name="Text">
-      <a name="text" val="指令译码信号"/>
-      <a name="font" val="SansSerif bold 14"/>
+    <comp lib="0" loc="(520,720)" name="Tunnel">
+      <a name="label" val="SLT"/>
     </comp>
-    <comp lib="0" loc="(780,50)" name="Splitter">
-      <a name="facing" val="south"/>
-      <a name="fanout" val="21"/>
-      <a name="incoming" val="21"/>
-    </comp>
-    <comp lib="0" loc="(90,250)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="ADDI"/>
-    </comp>
-    <comp lib="0" loc="(520,660)" name="Tunnel">
-      <a name="label" val="ADD"/>
-    </comp>
-    <comp lib="0" loc="(140,310)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="BEQ"/>
-    </comp>
-    <comp lib="0" loc="(1030,660)" name="Tunnel">
-      <a name="width" val="4"/>
-      <a name="label" val="ALU_OP"/>
-    </comp>
-    <comp lib="0" loc="(690,730)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="width" val="6"/>
-      <a name="label" val="FUNC"/>
-    </comp>
-    <comp lib="0" loc="(290,760)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="width" val="6"/>
-      <a name="label" val="FUNC"/>
+    <comp lib="0" loc="(860,260)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="IrWrite"/>
+      <a name="labelloc" val="east"/>
     </comp>
     <comp lib="3" loc="(140,610)" name="Comparator">
       <a name="width" val="6"/>
+    </comp>
+    <comp lib="6" loc="(383,201)" name="Text">
+      <a name="text" val="次态"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp lib="0" loc="(80,530)" name="Tunnel">
+      <a name="facing" val="south"/>
+      <a name="width" val="6"/>
+      <a name="label" val="OP"/>
+    </comp>
+    <comp lib="2" loc="(1000,660)" name="Multiplexer">
+      <a name="select" val="2"/>
+      <a name="width" val="4"/>
+      <a name="enable" val="false"/>
     </comp>
     <comp lib="4" loc="(720,250)" name="ROM">
       <a name="addrWidth" val="4"/>
@@ -1798,20 +2273,97 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
 4800 c0120 c00a0 6000c 800 d
 </a>
     </comp>
-    <comp lib="2" loc="(1000,660)" name="Multiplexer">
-      <a name="select" val="2"/>
-      <a name="width" val="4"/>
-      <a name="enable" val="false"/>
+    <comp lib="0" loc="(140,310)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="BEQ"/>
     </comp>
-    <comp lib="0" loc="(260,60)" name="Tunnel">
-      <a name="facing" val="north"/>
+    <comp lib="3" loc="(140,730)" name="Comparator">
+      <a name="width" val="6"/>
+    </comp>
+    <comp lib="0" loc="(1030,660)" name="Tunnel">
       <a name="width" val="4"/>
       <a name="label" val="ALU_OP"/>
+    </comp>
+    <comp lib="4" loc="(480,250)" name="Register">
+      <a name="width" val="4"/>
     </comp>
     <comp lib="0" loc="(170,60)" name="Tunnel">
       <a name="facing" val="north"/>
       <a name="width" val="6"/>
       <a name="label" val="FUNC"/>
+    </comp>
+    <comp lib="0" loc="(840,340)" name="Splitter">
+      <a name="facing" val="north"/>
+    </comp>
+    <comp lib="0" loc="(180,550)" name="Tunnel">
+      <a name="label" val="LW"/>
+    </comp>
+    <comp lib="6" loc="(281,338)" name="Text">
+      <a name="text" val="组合逻辑"/>
+    </comp>
+    <comp lib="0" loc="(360,210)" name="Splitter">
+      <a name="facing" val="west"/>
+      <a name="fanout" val="4"/>
+      <a name="incoming" val="4"/>
+      <a name="appear" val="center"/>
+      <a name="bit0" val="3"/>
+      <a name="bit1" val="2"/>
+      <a name="bit2" val="1"/>
+      <a name="bit3" val="0"/>
+    </comp>
+    <comp lib="0" loc="(160,230)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="R_TYPE"/>
+    </comp>
+    <comp lib="0" loc="(990,140)" name="Tunnel">
+      <a name="width" val="2"/>
+      <a name="label" val="ALU_Control"/>
+    </comp>
+    <comp lib="0" loc="(520,780)" name="Tunnel">
+      <a name="label" val="SysCall"/>
+    </comp>
+    <comp lib="0" loc="(690,730)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="width" val="6"/>
+      <a name="label" val="FUNC"/>
+    </comp>
+    <comp lib="0" loc="(260,50)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="output" val="true"/>
+      <a name="width" val="4"/>
+      <a name="label" val="ALU_OP"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(470,350)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="RST"/>
+    </comp>
+    <comp lib="0" loc="(980,720)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="width" val="2"/>
+      <a name="label" val="ALU_Control"/>
+    </comp>
+    <comp lib="0" loc="(170,50)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="width" val="6"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="Func"/>
+    </comp>
+    <comp lib="0" loc="(810,350)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="AluSrcA"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(1000,90)" name="Splitter">
+      <a name="facing" val="north"/>
+      <a name="fanout" val="4"/>
+      <a name="incoming" val="4"/>
+    </comp>
+    <comp lib="6" loc="(113,193)" name="Text">
+      <a name="text" val="指令译码信号"/>
+      <a name="font" val="SansSerif bold 14"/>
     </comp>
     <comp lib="0" loc="(840,300)" name="Pin">
       <a name="facing" val="north"/>
@@ -1819,25 +2371,28 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="label" val="MemToReg"/>
       <a name="labelloc" val="east"/>
     </comp>
-    <comp lib="0" loc="(150,350)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="SysCall"/>
-    </comp>
-    <comp lib="0" loc="(180,790)" name="Tunnel">
-      <a name="label" val="ADDI"/>
-    </comp>
     <comp lib="0" loc="(970,110)" name="Tunnel">
       <a name="label" val="P"/>
     </comp>
-    <comp lib="0" loc="(180,610)" name="Tunnel">
-      <a name="label" val="SW"/>
+    <comp lib="0" loc="(530,320)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="width" val="4"/>
+      <a name="label" val="当前状态"/>
+      <a name="labelloc" val="east"/>
     </comp>
-    <comp lib="3" loc="(140,550)" name="Comparator">
+    <comp lib="0" loc="(870,240)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="label" val="PcWrite"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="6" loc="(214,132)" name="Text">
+      <a name="text" val="现态"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp lib="3" loc="(140,850)" name="Comparator">
       <a name="width" val="6"/>
-    </comp>
-    <comp lib="6" loc="(651,201)" name="Text">
-      <a name="text" val="微程序控制器"/>
-      <a name="font" val="SansSerif bold 12"/>
     </comp>
   </circuit>
   <circuit name="◇状态机FSM">
@@ -2298,152 +2853,74 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(120,1620)" to="(120,1730)"/>
     <wire from="(330,1320)" to="(330,1360)"/>
     <wire from="(80,270)" to="(280,270)"/>
-    <comp lib="1" loc="(300,1760)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(480,2390)" name="OR Gate">
-      <a name="size" val="30"/>
-      <a name="inputs" val="8"/>
-    </comp>
-    <comp lib="1" loc="(300,930)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(300,1320)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(300,2500)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="0" loc="(500,2390)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="label" val="N0"/>
-      <a name="labelloc" val="north"/>
-    </comp>
-    <comp lib="1" loc="(470,1650)" name="OR Gate">
-      <a name="size" val="30"/>
-      <a name="inputs" val="6"/>
-    </comp>
-    <comp lib="1" loc="(380,1050)" name="AND Gate">
-      <a name="size" val="30"/>
-      <a name="inputs" val="4"/>
-    </comp>
-    <comp lib="1" loc="(300,1860)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(380,2730)" name="AND Gate">
-      <a name="size" val="30"/>
-      <a name="inputs" val="4"/>
-    </comp>
-    <comp lib="1" loc="(300,2120)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="0" loc="(40,80)" name="Pin">
-      <a name="tristate" val="false"/>
-      <a name="label" val="S2"/>
-      <a name="labelloc" val="north"/>
-    </comp>
-    <comp lib="1" loc="(300,2610)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="0" loc="(40,470)" name="Pin">
-      <a name="tristate" val="false"/>
-      <a name="label" val="BEQ"/>
-      <a name="labelloc" val="north"/>
-    </comp>
-    <comp lib="0" loc="(40,360)" name="Pin">
-      <a name="tristate" val="false"/>
-      <a name="label" val="LW"/>
-      <a name="labelloc" val="north"/>
-    </comp>
-    <comp lib="0" loc="(40,310)" name="Pin">
-      <a name="tristate" val="false"/>
-      <a name="label" val="ADDI"/>
-      <a name="labelloc" val="north"/>
-    </comp>
-    <comp lib="1" loc="(380,1980)" name="AND Gate">
-      <a name="size" val="30"/>
-      <a name="inputs" val="4"/>
-    </comp>
-    <comp lib="0" loc="(500,1650)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="label" val="N1"/>
-      <a name="labelloc" val="north"/>
-    </comp>
-    <comp lib="1" loc="(380,1130)" name="AND Gate">
-      <a name="size" val="30"/>
-      <a name="inputs" val="4"/>
-    </comp>
-    <comp lib="1" loc="(380,1800)" name="AND Gate">
-      <a name="size" val="30"/>
-      <a name="inputs" val="4"/>
-    </comp>
-    <comp lib="1" loc="(300,1900)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(300,900)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(300,1830)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(300,1010)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(380,850)" name="AND Gate">
-      <a name="size" val="30"/>
-    </comp>
-    <comp lib="1" loc="(470,410)" name="OR Gate">
-      <a name="size" val="30"/>
-      <a name="inputs" val="7"/>
-    </comp>
     <comp lib="0" loc="(40,200)" name="Pin">
       <a name="tristate" val="false"/>
       <a name="label" val="S0"/>
       <a name="labelloc" val="north"/>
     </comp>
-    <comp lib="1" loc="(300,850)" name="NOT Gate">
+    <comp lib="0" loc="(40,420)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="SW"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="1" loc="(300,2740)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(380,1130)" name="AND Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="4"/>
+    </comp>
+    <comp lib="1" loc="(300,2090)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(380,2650)" name="AND Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="4"/>
+    </comp>
+    <comp lib="1" loc="(300,1280)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(300,2000)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(300,1190)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(300,1320)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(300,1460)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(300,820)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(380,960)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="1" loc="(300,1940)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(300,1100)" name="NOT Gate">
       <a name="size" val="20"/>
     </comp>
     <comp lib="1" loc="(470,1050)" name="OR Gate">
       <a name="size" val="30"/>
       <a name="inputs" val="7"/>
     </comp>
-    <comp lib="6" loc="(478,46)" name="Text">
-      <a name="text" val="选择项目菜单中的分析电路----输入表达式自动生成"/>
-      <a name="font" val="SansSerif plain 16"/>
-    </comp>
-    <comp lib="1" loc="(300,1430)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(380,2560)" name="AND Gate">
-      <a name="size" val="30"/>
-    </comp>
-    <comp lib="0" loc="(40,140)" name="Pin">
+    <comp lib="0" loc="(40,360)" name="Pin">
       <a name="tristate" val="false"/>
-      <a name="label" val="S1"/>
+      <a name="label" val="LW"/>
       <a name="labelloc" val="north"/>
     </comp>
-    <comp lib="1" loc="(380,2120)" name="AND Gate">
+    <comp lib="1" loc="(300,2560)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(300,930)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(380,850)" name="AND Gate">
       <a name="size" val="30"/>
-    </comp>
-    <comp lib="0" loc="(40,250)" name="Pin">
-      <a name="tristate" val="false"/>
-      <a name="label" val="R_Type"/>
-      <a name="labelloc" val="north"/>
-    </comp>
-    <comp lib="1" loc="(380,960)" name="AND Gate">
-      <a name="size" val="30"/>
-    </comp>
-    <comp lib="1" loc="(300,790)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(300,2170)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(300,2640)" name="NOT Gate">
-      <a name="size" val="20"/>
     </comp>
     <comp lib="0" loc="(500,1050)" name="Pin">
       <a name="facing" val="west"/>
@@ -2451,31 +2928,126 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="label" val="N2"/>
       <a name="labelloc" val="north"/>
     </comp>
-    <comp lib="1" loc="(300,1100)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(300,820)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(300,1940)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(300,1380)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(300,2680)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(300,2090)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(300,960)" name="NOT Gate">
-      <a name="size" val="20"/>
+    <comp lib="0" loc="(500,2390)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="N0"/>
+      <a name="labelloc" val="north"/>
     </comp>
     <comp lib="1" loc="(300,2060)" name="NOT Gate">
       <a name="size" val="20"/>
     </comp>
-    <comp lib="1" loc="(380,2650)" name="AND Gate">
+    <comp lib="0" loc="(40,140)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="S1"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="1" loc="(300,2610)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="0" loc="(500,1650)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="N1"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(40,470)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="BEQ"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="1" loc="(480,2390)" name="OR Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="8"/>
+    </comp>
+    <comp lib="1" loc="(300,1140)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(300,2120)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(300,2170)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(300,1790)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(300,1860)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(380,2120)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="1" loc="(300,960)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(380,1050)" name="AND Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="4"/>
+    </comp>
+    <comp lib="1" loc="(300,900)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(470,1650)" name="OR Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="6"/>
+    </comp>
+    <comp lib="0" loc="(40,520)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="BNE"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(40,310)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="ADDI"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="1" loc="(300,1830)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="0" loc="(40,80)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="S2"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(40,250)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="R_Type"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="1" loc="(380,2560)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="6" loc="(478,46)" name="Text">
+      <a name="text" val="选择项目菜单中的分析电路----输入表达式自动生成"/>
+      <a name="font" val="SansSerif plain 16"/>
+    </comp>
+    <comp lib="1" loc="(300,2500)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(380,1380)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="1" loc="(380,1800)" name="AND Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="4"/>
+    </comp>
+    <comp lib="0" loc="(40,30)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="S3"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="1" loc="(380,1490)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="1" loc="(380,1270)" name="AND Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="4"/>
+    </comp>
+    <comp lib="1" loc="(300,2530)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(380,1980)" name="AND Gate">
       <a name="size" val="30"/>
       <a name="inputs" val="4"/>
     </comp>
@@ -2485,82 +3057,65 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="label" val="N3"/>
       <a name="labelloc" val="north"/>
     </comp>
-    <comp lib="0" loc="(40,520)" name="Pin">
-      <a name="tristate" val="false"/>
-      <a name="label" val="BNE"/>
-      <a name="labelloc" val="north"/>
-    </comp>
-    <comp lib="1" loc="(300,2000)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(380,1270)" name="AND Gate">
-      <a name="size" val="30"/>
-      <a name="inputs" val="4"/>
-    </comp>
-    <comp lib="0" loc="(40,590)" name="Pin">
-      <a name="tristate" val="false"/>
-      <a name="label" val="SYSCALL"/>
-      <a name="labelloc" val="north"/>
-    </comp>
-    <comp lib="1" loc="(300,1350)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(300,1190)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(300,2740)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(300,2030)" name="NOT Gate">
+    <comp lib="1" loc="(300,1900)" name="NOT Gate">
       <a name="size" val="20"/>
     </comp>
     <comp lib="1" loc="(380,1200)" name="AND Gate">
       <a name="size" val="30"/>
       <a name="inputs" val="4"/>
     </comp>
-    <comp lib="1" loc="(300,1140)" name="NOT Gate">
+    <comp lib="1" loc="(300,1970)" name="NOT Gate">
       <a name="size" val="20"/>
     </comp>
-    <comp lib="0" loc="(40,420)" name="Pin">
-      <a name="tristate" val="false"/>
-      <a name="label" val="SW"/>
-      <a name="labelloc" val="north"/>
+    <comp lib="1" loc="(300,1350)" name="NOT Gate">
+      <a name="size" val="20"/>
     </comp>
-    <comp lib="1" loc="(380,1490)" name="AND Gate">
-      <a name="size" val="30"/>
+    <comp lib="1" loc="(300,2680)" name="NOT Gate">
+      <a name="size" val="20"/>
     </comp>
     <comp lib="1" loc="(300,1040)" name="NOT Gate">
       <a name="size" val="20"/>
     </comp>
-    <comp lib="1" loc="(300,1280)" name="NOT Gate">
+    <comp lib="1" loc="(300,1760)" name="NOT Gate">
       <a name="size" val="20"/>
     </comp>
-    <comp lib="1" loc="(300,2560)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(300,2530)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(300,1970)" name="NOT Gate">
-      <a name="size" val="20"/>
-    </comp>
-    <comp lib="1" loc="(300,1790)" name="NOT Gate">
-      <a name="size" val="20"/>
+    <comp lib="1" loc="(380,2730)" name="AND Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="4"/>
     </comp>
     <comp lib="1" loc="(380,1890)" name="AND Gate">
       <a name="size" val="30"/>
       <a name="inputs" val="4"/>
     </comp>
-    <comp lib="1" loc="(300,1460)" name="NOT Gate">
+    <comp lib="1" loc="(470,410)" name="OR Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="7"/>
+    </comp>
+    <comp lib="1" loc="(300,1380)" name="NOT Gate">
       <a name="size" val="20"/>
     </comp>
-    <comp lib="1" loc="(380,1380)" name="AND Gate">
-      <a name="size" val="30"/>
+    <comp lib="1" loc="(300,2640)" name="NOT Gate">
+      <a name="size" val="20"/>
     </comp>
-    <comp lib="0" loc="(40,30)" name="Pin">
+    <comp lib="1" loc="(300,2030)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(300,1430)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="0" loc="(40,590)" name="Pin">
       <a name="tristate" val="false"/>
-      <a name="label" val="S3"/>
+      <a name="label" val="SYSCALL"/>
       <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="1" loc="(300,1010)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(300,790)" name="NOT Gate">
+      <a name="size" val="20"/>
+    </comp>
+    <comp lib="1" loc="(300,850)" name="NOT Gate">
+      <a name="size" val="20"/>
     </comp>
   </circuit>
   <circuit name="◆MIPS Regifile">
@@ -2600,34 +3155,13 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(340,130)" to="(390,130)"/>
     <wire from="(340,230)" to="(390,230)"/>
     <wire from="(340,320)" to="(340,360)"/>
-    <comp lib="0" loc="(290,330)" name="Pin">
+    <comp lib="0" loc="(250,360)" name="Pin">
       <a name="facing" val="north"/>
       <a name="width" val="5"/>
       <a name="tristate" val="false"/>
-      <a name="label" val="R1#"/>
-    </comp>
-    <comp lib="0" loc="(90,260)" name="Pin">
-      <a name="tristate" val="false"/>
-      <a name="label" val="Clk"/>
-    </comp>
-    <comp lib="0" loc="(150,170)" name="Pin">
-      <a name="width" val="32"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="Din"/>
+      <a name="label" val="W#"/>
     </comp>
     <comp lib="7" loc="(340,180)" name="RegisterFile"/>
-    <comp lib="0" loc="(390,130)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="width" val="32"/>
-      <a name="label" val="R1"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(220,320)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="WE"/>
-    </comp>
     <comp lib="0" loc="(390,230)" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
@@ -2635,17 +3169,38 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="label" val="R2"/>
       <a name="labelloc" val="east"/>
     </comp>
+    <comp lib="0" loc="(290,330)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="width" val="5"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="R1#"/>
+    </comp>
+    <comp lib="0" loc="(220,320)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="WE"/>
+    </comp>
+    <comp lib="0" loc="(150,170)" name="Pin">
+      <a name="width" val="32"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="Din"/>
+    </comp>
     <comp lib="0" loc="(340,360)" name="Pin">
       <a name="facing" val="north"/>
       <a name="width" val="5"/>
       <a name="tristate" val="false"/>
       <a name="label" val="R2#"/>
     </comp>
-    <comp lib="0" loc="(250,360)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="width" val="5"/>
+    <comp lib="0" loc="(90,260)" name="Pin">
       <a name="tristate" val="false"/>
-      <a name="label" val="W#"/>
+      <a name="label" val="Clk"/>
+    </comp>
+    <comp lib="0" loc="(390,130)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="32"/>
+      <a name="label" val="R1"/>
+      <a name="labelloc" val="east"/>
     </comp>
   </circuit>
   <circuit name="◆MIPS ALU">
@@ -2701,6 +3256,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(6700,4790)" to="(6890,4790)"/>
     <wire from="(6610,5020)" to="(6610,5030)"/>
     <wire from="(6620,5170)" to="(6740,5170)"/>
+    <wire from="(240,420)" to="(320,420)"/>
     <wire from="(6790,4880)" to="(6890,4880)"/>
     <wire from="(6630,5120)" to="(6730,5120)"/>
     <wire from="(6780,4870)" to="(6780,5400)"/>
@@ -2738,6 +3294,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(6770,4860)" to="(6770,5320)"/>
     <wire from="(6710,4800)" to="(6890,4800)"/>
     <wire from="(6710,4800)" to="(6710,5000)"/>
+    <wire from="(240,400)" to="(260,400)"/>
     <wire from="(6640,5400)" to="(6740,5400)"/>
     <wire from="(6500,5260)" to="(6590,5260)"/>
     <wire from="(6560,4890)" to="(6590,4890)"/>
@@ -2754,10 +3311,13 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(6630,5000)" to="(6710,5000)"/>
     <wire from="(6760,4850)" to="(6890,4850)"/>
     <wire from="(6510,5180)" to="(6510,5230)"/>
+    <wire from="(200,460)" to="(200,480)"/>
     <wire from="(6500,4810)" to="(6500,4870)"/>
     <wire from="(6500,5050)" to="(6500,5110)"/>
     <wire from="(6500,4930)" to="(6500,4990)"/>
     <wire from="(6500,5370)" to="(6500,5430)"/>
+    <wire from="(140,370)" to="(180,370)"/>
+    <wire from="(140,450)" to="(180,450)"/>
     <wire from="(6880,4910)" to="(6890,4910)"/>
     <wire from="(6880,5070)" to="(6890,5070)"/>
     <wire from="(6880,5110)" to="(6890,5110)"/>
@@ -2826,187 +3386,54 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(6820,5000)" to="(6820,5030)"/>
     <wire from="(6780,4870)" to="(6890,4870)"/>
     <wire from="(6740,4830)" to="(6740,5170)"/>
-    <comp lib="6" loc="(269,422)" name="Text"/>
-    <comp lib="6" loc="(293,45)" name="Text">
-      <a name="text" val="输入引脚"/>
-      <a name="font" val="SansSerif bold 12"/>
-    </comp>
-    <comp lib="6" loc="(694,148)" name="Text">
-      <a name="text" val="输出引脚"/>
-      <a name="font" val="SansSerif bold 12"/>
-    </comp>
-    <comp lib="3" loc="(6630,5380)" name="Comparator">
+    <wire from="(220,450)" to="(220,510)"/>
+    <comp lib="3" loc="(6630,4760)" name="Shifter">
       <a name="width" val="32"/>
     </comp>
-    <comp lib="0" loc="(130,90)" name="Tunnel">
+    <comp lib="0" loc="(140,450)" name="Tunnel">
+      <a name="facing" val="east"/>
       <a name="width" val="32"/>
-      <a name="label" val="X"/>
+      <a name="label" val="Y"/>
+    </comp>
+    <comp lib="0" loc="(320,420)" name="Tunnel">
+      <a name="width" val="32"/>
+      <a name="label" val="Result2"/>
     </comp>
     <comp lib="0" loc="(6910,4750)" name="Tunnel">
       <a name="facing" val="south"/>
       <a name="width" val="4"/>
       <a name="label" val="S"/>
     </comp>
-    <comp lib="0" loc="(110,90)" name="Pin">
+    <comp lib="0" loc="(350,90)" name="Tunnel">
+      <a name="width" val="4"/>
+      <a name="label" val="S"/>
+    </comp>
+    <comp lib="3" loc="(6630,4940)" name="Multiplier">
       <a name="width" val="32"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="X"/>
-      <a name="labelloc" val="north"/>
-    </comp>
-    <comp lib="3" loc="(6630,4760)" name="Shifter">
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(6870,5380)" name="Tunnel">
-      <a name="label" val="Equal"/>
-    </comp>
-    <comp lib="3" loc="(6630,5060)" name="Adder">
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="3" loc="(6630,4880)" name="Shifter">
-      <a name="width" val="32"/>
-      <a name="shift" val="lr"/>
-    </comp>
-    <comp lib="0" loc="(6480,4810)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="width" val="32"/>
-      <a name="label" val="X"/>
-    </comp>
-    <comp lib="0" loc="(6730,5390)" name="Constant">
-      <a name="width" val="31"/>
-      <a name="value" val="0x0"/>
     </comp>
     <comp lib="0" loc="(260,90)" name="Tunnel">
       <a name="width" val="32"/>
       <a name="label" val="Y"/>
     </comp>
-    <comp lib="0" loc="(6540,4890)" name="Splitter">
-      <a name="fanout" val="1"/>
-      <a name="incoming" val="32"/>
-      <a name="appear" val="center"/>
-      <a name="bit1" val="0"/>
-      <a name="bit2" val="0"/>
-      <a name="bit3" val="0"/>
-      <a name="bit4" val="0"/>
-      <a name="bit5" val="none"/>
-      <a name="bit6" val="none"/>
-      <a name="bit7" val="none"/>
-      <a name="bit8" val="none"/>
-      <a name="bit9" val="none"/>
-      <a name="bit10" val="none"/>
-      <a name="bit11" val="none"/>
-      <a name="bit12" val="none"/>
-      <a name="bit13" val="none"/>
-      <a name="bit14" val="none"/>
-      <a name="bit15" val="none"/>
-      <a name="bit16" val="none"/>
-      <a name="bit17" val="none"/>
-      <a name="bit18" val="none"/>
-      <a name="bit19" val="none"/>
-      <a name="bit20" val="none"/>
-      <a name="bit21" val="none"/>
-      <a name="bit22" val="none"/>
-      <a name="bit23" val="none"/>
-      <a name="bit24" val="none"/>
-      <a name="bit25" val="none"/>
-      <a name="bit26" val="none"/>
-      <a name="bit27" val="none"/>
-      <a name="bit28" val="none"/>
-      <a name="bit29" val="none"/>
-      <a name="bit30" val="none"/>
-      <a name="bit31" val="none"/>
-    </comp>
-    <comp lib="1" loc="(6630,5320)" name="NOR Gate">
+    <comp lib="3" loc="(6630,5060)" name="Adder">
       <a name="width" val="32"/>
-      <a name="size" val="30"/>
-      <a name="inputs" val="2"/>
-      <a name="label" val="NOR"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
     </comp>
-    <comp lib="0" loc="(6540,4770)" name="Splitter">
-      <a name="fanout" val="1"/>
-      <a name="incoming" val="32"/>
-      <a name="appear" val="center"/>
-      <a name="bit1" val="0"/>
-      <a name="bit2" val="0"/>
-      <a name="bit3" val="0"/>
-      <a name="bit4" val="0"/>
-      <a name="bit5" val="none"/>
-      <a name="bit6" val="none"/>
-      <a name="bit7" val="none"/>
-      <a name="bit8" val="none"/>
-      <a name="bit9" val="none"/>
-      <a name="bit10" val="none"/>
-      <a name="bit11" val="none"/>
-      <a name="bit12" val="none"/>
-      <a name="bit13" val="none"/>
-      <a name="bit14" val="none"/>
-      <a name="bit15" val="none"/>
-      <a name="bit16" val="none"/>
-      <a name="bit17" val="none"/>
-      <a name="bit18" val="none"/>
-      <a name="bit19" val="none"/>
-      <a name="bit20" val="none"/>
-      <a name="bit21" val="none"/>
-      <a name="bit22" val="none"/>
-      <a name="bit23" val="none"/>
-      <a name="bit24" val="none"/>
-      <a name="bit25" val="none"/>
-      <a name="bit26" val="none"/>
-      <a name="bit27" val="none"/>
-      <a name="bit28" val="none"/>
-      <a name="bit29" val="none"/>
-      <a name="bit30" val="none"/>
-      <a name="bit31" val="none"/>
-    </comp>
-    <comp lib="0" loc="(6760,5450)" name="Splitter">
-      <a name="facing" val="west"/>
-      <a name="incoming" val="32"/>
-      <a name="appear" val="center"/>
-      <a name="bit0" val="1"/>
-      <a name="bit1" val="0"/>
-      <a name="bit2" val="0"/>
-      <a name="bit3" val="0"/>
-      <a name="bit4" val="0"/>
-      <a name="bit5" val="0"/>
-      <a name="bit6" val="0"/>
-      <a name="bit7" val="0"/>
-      <a name="bit8" val="0"/>
-      <a name="bit9" val="0"/>
-      <a name="bit10" val="0"/>
-      <a name="bit11" val="0"/>
-      <a name="bit12" val="0"/>
-      <a name="bit13" val="0"/>
-      <a name="bit14" val="0"/>
-      <a name="bit15" val="0"/>
-      <a name="bit16" val="0"/>
-      <a name="bit17" val="0"/>
-      <a name="bit18" val="0"/>
-      <a name="bit19" val="0"/>
-      <a name="bit20" val="0"/>
-      <a name="bit21" val="0"/>
-      <a name="bit22" val="0"/>
-      <a name="bit23" val="0"/>
-      <a name="bit24" val="0"/>
-      <a name="bit25" val="0"/>
-      <a name="bit26" val="0"/>
-      <a name="bit27" val="0"/>
-      <a name="bit28" val="0"/>
-      <a name="bit29" val="0"/>
-      <a name="bit30" val="0"/>
-      <a name="bit31" val="0"/>
-    </comp>
-    <comp lib="0" loc="(680,110)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="label" val="Equal"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(560,120)" name="Pin">
-      <a name="facing" val="south"/>
-      <a name="output" val="true"/>
+    <comp lib="0" loc="(140,370)" name="Tunnel">
+      <a name="facing" val="east"/>
       <a name="width" val="32"/>
-      <a name="label" val="Result 2"/>
-      <a name="labelloc" val="north"/>
+      <a name="label" val="X"/>
+    </comp>
+    <comp lib="3" loc="(6630,4880)" name="Shifter">
+      <a name="width" val="32"/>
+      <a name="shift" val="lr"/>
+    </comp>
+    <comp lib="0" loc="(260,400)" name="Tunnel">
+      <a name="width" val="32"/>
+      <a name="label" val="Result"/>
+    </comp>
+    <comp lib="0" loc="(6730,5390)" name="Constant">
+      <a name="width" val="31"/>
+      <a name="value" val="0x0"/>
     </comp>
     <comp lib="0" loc="(440,120)" name="Pin">
       <a name="facing" val="south"/>
@@ -3014,53 +3441,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="width" val="32"/>
       <a name="label" val="Result"/>
       <a name="labelloc" val="north"/>
-    </comp>
-    <comp lib="0" loc="(6910,4950)" name="Tunnel">
-      <a name="facing" val="south"/>
-      <a name="width" val="4"/>
-      <a name="label" val="S"/>
-    </comp>
-    <comp lib="0" loc="(6510,4740)" name="Tunnel">
-      <a name="facing" val="south"/>
-      <a name="width" val="32"/>
-      <a name="label" val="Y"/>
-    </comp>
-    <comp lib="3" loc="(6630,4820)" name="Shifter">
-      <a name="width" val="32"/>
-      <a name="shift" val="ar"/>
-    </comp>
-    <comp lib="1" loc="(6620,5170)" name="AND Gate">
-      <a name="width" val="32"/>
-      <a name="size" val="30"/>
-      <a name="inputs" val="2"/>
-      <a name="label" val="AND"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="6" loc="(99,346)" name="Text"/>
-    <comp lib="1" loc="(6630,5270)" name="XOR Gate">
-      <a name="width" val="32"/>
-      <a name="size" val="30"/>
-      <a name="inputs" val="2"/>
-      <a name="label" val="XOR"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-      <a name="xor" val="odd"/>
-    </comp>
-    <comp lib="0" loc="(660,110)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="Equal"/>
-    </comp>
-    <comp lib="3" loc="(6630,4940)" name="Multiplier">
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(240,90)" name="Pin">
-      <a name="width" val="32"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="Y"/>
-      <a name="labelloc" val="north"/>
-    </comp>
-    <comp lib="0" loc="(6970,4840)" name="Tunnel">
-      <a name="width" val="32"/>
-      <a name="label" val="Result"/>
     </comp>
     <comp lib="0" loc="(6540,4830)" name="Splitter">
       <a name="fanout" val="1"/>
@@ -3098,29 +3478,129 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="bit30" val="none"/>
       <a name="bit31" val="none"/>
     </comp>
-    <comp lib="0" loc="(6730,5440)" name="Constant">
-      <a name="width" val="31"/>
-      <a name="value" val="0x0"/>
+    <comp lib="0" loc="(6970,5040)" name="Tunnel">
+      <a name="width" val="32"/>
+      <a name="label" val="Result2"/>
     </comp>
-    <comp lib="0" loc="(350,90)" name="Tunnel">
-      <a name="width" val="4"/>
-      <a name="label" val="S"/>
+    <comp lib="0" loc="(6540,4770)" name="Splitter">
+      <a name="fanout" val="1"/>
+      <a name="incoming" val="32"/>
+      <a name="appear" val="center"/>
+      <a name="bit1" val="0"/>
+      <a name="bit2" val="0"/>
+      <a name="bit3" val="0"/>
+      <a name="bit4" val="0"/>
+      <a name="bit5" val="none"/>
+      <a name="bit6" val="none"/>
+      <a name="bit7" val="none"/>
+      <a name="bit8" val="none"/>
+      <a name="bit9" val="none"/>
+      <a name="bit10" val="none"/>
+      <a name="bit11" val="none"/>
+      <a name="bit12" val="none"/>
+      <a name="bit13" val="none"/>
+      <a name="bit14" val="none"/>
+      <a name="bit15" val="none"/>
+      <a name="bit16" val="none"/>
+      <a name="bit17" val="none"/>
+      <a name="bit18" val="none"/>
+      <a name="bit19" val="none"/>
+      <a name="bit20" val="none"/>
+      <a name="bit21" val="none"/>
+      <a name="bit22" val="none"/>
+      <a name="bit23" val="none"/>
+      <a name="bit24" val="none"/>
+      <a name="bit25" val="none"/>
+      <a name="bit26" val="none"/>
+      <a name="bit27" val="none"/>
+      <a name="bit28" val="none"/>
+      <a name="bit29" val="none"/>
+      <a name="bit30" val="none"/>
+      <a name="bit31" val="none"/>
     </comp>
-    <comp lib="0" loc="(6880,5120)" name="Ground">
+    <comp lib="0" loc="(110,90)" name="Pin">
+      <a name="width" val="32"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="X"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(6510,4740)" name="Tunnel">
+      <a name="facing" val="south"/>
+      <a name="width" val="32"/>
+      <a name="label" val="Y"/>
+    </comp>
+    <comp lib="6" loc="(191,153)" name="Text">
+      <a name="text" val="不要改变此引脚区域内容，也不要改变ALU封装形式"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp lib="3" loc="(6630,5000)" name="Divider">
       <a name="width" val="32"/>
     </comp>
-    <comp lib="2" loc="(6930,4840)" name="Multiplexer">
+    <comp lib="1" loc="(6620,5170)" name="AND Gate">
+      <a name="width" val="32"/>
+      <a name="size" val="30"/>
+      <a name="inputs" val="2"/>
+      <a name="label" val="AND"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(6880,4920)" name="Ground">
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="0" loc="(220,510)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="label" val="Equal"/>
+    </comp>
+    <comp lib="1" loc="(6630,5320)" name="NOR Gate">
+      <a name="width" val="32"/>
+      <a name="size" val="30"/>
+      <a name="inputs" val="2"/>
+      <a name="label" val="NOR"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="2" loc="(6930,5040)" name="Multiplexer">
       <a name="selloc" val="tr"/>
       <a name="select" val="4"/>
       <a name="width" val="32"/>
       <a name="enable" val="false"/>
     </comp>
-    <comp lib="0" loc="(6880,4920)" name="Ground">
-      <a name="width" val="32"/>
+    <comp lib="0" loc="(340,90)" name="Pin">
+      <a name="width" val="4"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="AluOP"/>
+      <a name="labelloc" val="south"/>
     </comp>
-    <comp lib="0" loc="(6970,5040)" name="Tunnel">
+    <comp lib="0" loc="(6730,5440)" name="Constant">
+      <a name="width" val="31"/>
+      <a name="value" val="0x0"/>
+    </comp>
+    <comp lib="0" loc="(560,120)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="output" val="true"/>
+      <a name="width" val="32"/>
+      <a name="label" val="Result 2"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(130,90)" name="Tunnel">
+      <a name="width" val="32"/>
+      <a name="label" val="X"/>
+    </comp>
+    <comp lib="0" loc="(440,130)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="width" val="32"/>
+      <a name="label" val="Result"/>
+    </comp>
+    <comp lib="0" loc="(6480,4810)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="width" val="32"/>
+      <a name="label" val="X"/>
+    </comp>
+    <comp lib="0" loc="(560,130)" name="Tunnel">
+      <a name="facing" val="north"/>
       <a name="width" val="32"/>
       <a name="label" val="Result2"/>
+    </comp>
+    <comp lib="3" loc="(6630,5120)" name="Subtractor">
+      <a name="width" val="32"/>
     </comp>
     <comp lib="1" loc="(6620,5220)" name="OR Gate">
       <a name="width" val="32"/>
@@ -3129,19 +3609,51 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="label" val="OR"/>
       <a name="labelfont" val="SansSerif bold 10"/>
     </comp>
-    <comp lib="3" loc="(6630,5440)" name="Comparator">
+    <comp lib="0" loc="(6540,4890)" name="Splitter">
+      <a name="fanout" val="1"/>
+      <a name="incoming" val="32"/>
+      <a name="appear" val="center"/>
+      <a name="bit1" val="0"/>
+      <a name="bit2" val="0"/>
+      <a name="bit3" val="0"/>
+      <a name="bit4" val="0"/>
+      <a name="bit5" val="none"/>
+      <a name="bit6" val="none"/>
+      <a name="bit7" val="none"/>
+      <a name="bit8" val="none"/>
+      <a name="bit9" val="none"/>
+      <a name="bit10" val="none"/>
+      <a name="bit11" val="none"/>
+      <a name="bit12" val="none"/>
+      <a name="bit13" val="none"/>
+      <a name="bit14" val="none"/>
+      <a name="bit15" val="none"/>
+      <a name="bit16" val="none"/>
+      <a name="bit17" val="none"/>
+      <a name="bit18" val="none"/>
+      <a name="bit19" val="none"/>
+      <a name="bit20" val="none"/>
+      <a name="bit21" val="none"/>
+      <a name="bit22" val="none"/>
+      <a name="bit23" val="none"/>
+      <a name="bit24" val="none"/>
+      <a name="bit25" val="none"/>
+      <a name="bit26" val="none"/>
+      <a name="bit27" val="none"/>
+      <a name="bit28" val="none"/>
+      <a name="bit29" val="none"/>
+      <a name="bit30" val="none"/>
+      <a name="bit31" val="none"/>
+    </comp>
+    <comp lib="0" loc="(6880,5120)" name="Ground">
       <a name="width" val="32"/>
     </comp>
-    <comp lib="0" loc="(560,130)" name="Tunnel">
-      <a name="facing" val="north"/>
+    <comp lib="3" loc="(6630,4820)" name="Shifter">
       <a name="width" val="32"/>
-      <a name="label" val="Result2"/>
+      <a name="shift" val="ar"/>
     </comp>
-    <comp lib="0" loc="(340,90)" name="Pin">
-      <a name="width" val="4"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="AluOP"/>
-      <a name="labelloc" val="south"/>
+    <comp lib="3" loc="(6630,5380)" name="Comparator">
+      <a name="width" val="32"/>
     </comp>
     <comp lib="0" loc="(6760,5400)" name="Splitter">
       <a name="facing" val="west"/>
@@ -3180,26 +3692,103 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="bit30" val="0"/>
       <a name="bit31" val="0"/>
     </comp>
-    <comp lib="3" loc="(6630,5000)" name="Divider">
-      <a name="width" val="32"/>
+    <comp lib="0" loc="(6760,5450)" name="Splitter">
+      <a name="facing" val="west"/>
+      <a name="incoming" val="32"/>
+      <a name="appear" val="center"/>
+      <a name="bit0" val="1"/>
+      <a name="bit1" val="0"/>
+      <a name="bit2" val="0"/>
+      <a name="bit3" val="0"/>
+      <a name="bit4" val="0"/>
+      <a name="bit5" val="0"/>
+      <a name="bit6" val="0"/>
+      <a name="bit7" val="0"/>
+      <a name="bit8" val="0"/>
+      <a name="bit9" val="0"/>
+      <a name="bit10" val="0"/>
+      <a name="bit11" val="0"/>
+      <a name="bit12" val="0"/>
+      <a name="bit13" val="0"/>
+      <a name="bit14" val="0"/>
+      <a name="bit15" val="0"/>
+      <a name="bit16" val="0"/>
+      <a name="bit17" val="0"/>
+      <a name="bit18" val="0"/>
+      <a name="bit19" val="0"/>
+      <a name="bit20" val="0"/>
+      <a name="bit21" val="0"/>
+      <a name="bit22" val="0"/>
+      <a name="bit23" val="0"/>
+      <a name="bit24" val="0"/>
+      <a name="bit25" val="0"/>
+      <a name="bit26" val="0"/>
+      <a name="bit27" val="0"/>
+      <a name="bit28" val="0"/>
+      <a name="bit29" val="0"/>
+      <a name="bit30" val="0"/>
+      <a name="bit31" val="0"/>
     </comp>
-    <comp lib="3" loc="(6630,5120)" name="Subtractor">
+    <comp lib="0" loc="(6970,4840)" name="Tunnel">
       <a name="width" val="32"/>
+      <a name="label" val="Result"/>
     </comp>
-    <comp lib="2" loc="(6930,5040)" name="Multiplexer">
+    <comp lib="0" loc="(200,480)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="width" val="4"/>
+      <a name="label" val="S"/>
+    </comp>
+    <comp lib="1" loc="(6630,5270)" name="XOR Gate">
+      <a name="width" val="32"/>
+      <a name="size" val="30"/>
+      <a name="inputs" val="2"/>
+      <a name="label" val="XOR"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+      <a name="xor" val="odd"/>
+    </comp>
+    <comp lib="0" loc="(660,110)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="Equal"/>
+    </comp>
+    <comp lib="2" loc="(6930,4840)" name="Multiplexer">
       <a name="selloc" val="tr"/>
       <a name="select" val="4"/>
       <a name="width" val="32"/>
       <a name="enable" val="false"/>
     </comp>
-    <comp lib="6" loc="(191,153)" name="Text">
-      <a name="text" val="不要改变此引脚区域内容，也不要改变ALU封装形式"/>
-      <a name="font" val="SansSerif bold 14"/>
+    <comp lib="0" loc="(680,110)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="Equal"/>
+      <a name="labelloc" val="east"/>
     </comp>
-    <comp lib="0" loc="(440,130)" name="Tunnel">
-      <a name="facing" val="north"/>
+    <comp lib="0" loc="(6910,4950)" name="Tunnel">
+      <a name="facing" val="south"/>
+      <a name="width" val="4"/>
+      <a name="label" val="S"/>
+    </comp>
+    <comp lib="8" loc="(210,410)" name="☆算术逻辑运算单元ALU"/>
+    <comp lib="0" loc="(240,90)" name="Pin">
       <a name="width" val="32"/>
-      <a name="label" val="Result"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="Y"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="6" loc="(694,148)" name="Text">
+      <a name="text" val="输出引脚"/>
+      <a name="font" val="SansSerif bold 12"/>
+    </comp>
+    <comp lib="6" loc="(99,346)" name="Text"/>
+    <comp lib="6" loc="(293,45)" name="Text">
+      <a name="text" val="输入引脚"/>
+      <a name="font" val="SansSerif bold 12"/>
+    </comp>
+    <comp lib="0" loc="(6870,5380)" name="Tunnel">
+      <a name="label" val="Equal"/>
+    </comp>
+    <comp lib="6" loc="(269,422)" name="Text"/>
+    <comp lib="3" loc="(6630,5440)" name="Comparator">
+      <a name="width" val="32"/>
     </comp>
   </circuit>
 </project>
